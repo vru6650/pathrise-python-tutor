@@ -1,1 +1,1 @@
-web: python v5-unity/bottle_server.py
+web: sh -c 'cd ./v5-unity/ && python bottle_server.py'
