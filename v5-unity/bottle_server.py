@@ -62,4 +62,7 @@ def get_py_exec():
 
 
 if __name__ == "__main__":
-    run(host='localhost', port=8003, reloader=True)
+    if os.environ.get('APP_LOCATION')=='heroku':
+        run(host='0.0.0.0', port=int(os.environ.get("PORT",5000)), reloader=True)
+    else:
+        run(host='localhost', port=8003, reloader=True)
