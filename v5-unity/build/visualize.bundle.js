@@ -611,7 +611,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 */
 __webpack_require__(7);
 __webpack_require__(0);
-__webpack_require__(10); // DO NOT UPGRADE ABOVE 1.3.10 OR ELSE BREAKAGE WILL OCCUR 
+__webpack_require__(10); // DO NOT UPGRADE ABOVE 1.3.10 OR ELSE BREAKAGE WILL OCCUR
 __webpack_require__(8);
 __webpack_require__(14);
 __webpack_require__(9); // contains slight pgbovine modifications
@@ -832,23 +832,23 @@ var ExecutionVisualizer = /** @class */ (function () {
     };
     /* API for adding a hook, created by David Pritchard
        https://github.com/daveagp
-  
+
       [this documentation is a bit deprecated since Philip made try_hook a
        method of ExecutionVisualizer, but the general ideas remain]
-  
+
      An external user should call
        add_pytutor_hook("hook_name_here", function(args) {...})
      args will be a javascript object with several named properties;
      this is meant to be similar to Python's keyword arguments.
-  
+
      The hooked function should return an array whose first element is a boolean:
      true if it completely handled the situation (no further hooks
      nor the base function should be called); false otherwise (wasn't handled).
      If the hook semantically represents a function that returns something,
      the second value of the returned array is that semantic return value.
-  
+
      E.g. for the Java visualizer a simplified version of a hook we use is:
-  
+
     add_pytutor_hook(
       "isPrimitiveType",
       function(args) {
@@ -857,10 +857,10 @@ var ExecutionVisualizer = /** @class */ (function () {
           return [true, true]; // yes we handled it, yes it's primitive
         return [false]; // didn't handle it, let someone else
       });
-  
+
      Hook callbacks can return false or undefined (i.e. no return
      value) in lieu of [false].
-  
+
      NB: If multiple functions are added to a hook, the oldest goes first. */
     ExecutionVisualizer.prototype.add_pytutor_hook = function (hook_name, func) {
         if (this.pytutor_hooks[hook_name])
@@ -870,17 +870,17 @@ var ExecutionVisualizer = /** @class */ (function () {
     };
     /*  [this documentation is a bit deprecated since Philip made try_hook a
          method of ExecutionVisualizer, but the general ideas remain]
-  
+
     try_hook(hook_name, args): how the internal codebase invokes a hook.
-  
+
     args will be a javascript object with several named properties;
     this is meant to be similar to Python's keyword arguments. E.g.,
-  
+
     function isPrimitiveType(obj) {
       var hook_result = try_hook("isPrimitiveType", {obj:obj});
       if (hook_result[0]) return hook_result[1];
       // go on as normal if the hook didn't handle it
-  
+
     Although add_pytutor_hook allows the hooked function to
     return false or undefined, try_hook will always return
     something with the strict format [false], [true] or [true, ...]. */
@@ -1452,13 +1452,13 @@ var ExecutionVisualizer = /** @class */ (function () {
             /* kinda nutsy hack: if the previous line is a return line, don't
                highlight it. instead, highlight the line in the enclosing
                function that called this one (i.e., the call site). e.g.,:
-      
+
                1. def foo(lst):
                2.   return len(lst)
                3.
                4. y = foo([1,2,3])
                5. print y
-      
+
                If prevLineNumber is 2 and prevIsReturn, then curLineNumber is
                5, since that's the line that executes right after line 2
                finishes. However, this looks confusing to the user since what
@@ -1703,12 +1703,12 @@ var DataVisualizer = /** @class */ (function () {
         // is derived from the FIRST object ID inserted into the row. Since all
         // object IDs are unique, all row IDs will also be unique.
         /* This is a good, simple example to test whether objects "jiggle"
-    
+
         x = [1, [2, [3, None]]]
         y = [4, [5, [6, None]]]
-    
+
         x[1][1] = y[1]
-    
+
         */
         this.curTraceLayouts = [];
         this.curTraceLayouts.push([]); // pre-seed with an empty sentinel to simplify the code
@@ -20617,7 +20617,7 @@ var tooltip = $.widget( "ui.tooltip", {
 /* WEBPACK VAR INJECTION */(function(jQuery) {/*!
  * jQuery BBQ: Back Button & Query Library - v1.3pre - 8/26/2010
  * http://benalman.com/projects/jquery-bbq-plugin/
- * 
+ *
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
@@ -20626,41 +20626,41 @@ var tooltip = $.widget( "ui.tooltip", {
 // Script: jQuery BBQ: Back Button & Query Library
 //
 // *Version: 1.3pre, Last updated: 8/26/2010*
-// 
+//
 // Project Home - http://benalman.com/projects/jquery-bbq-plugin/
 // GitHub       - http://github.com/cowboy/jquery-bbq/
 // Source       - http://github.com/cowboy/jquery-bbq/raw/master/jquery.ba-bbq.js
 // (Minified)   - http://github.com/cowboy/jquery-bbq/raw/master/jquery.ba-bbq.min.js (2.2kb gzipped)
-// 
+//
 // About: License
-// 
+//
 // Copyright (c) 2010 "Cowboy" Ben Alman,
 // Dual licensed under the MIT and GPL licenses.
 // http://benalman.com/about/license/
-// 
+//
 // About: Examples
-// 
+//
 // These working examples, complete with fully commented code, illustrate a few
 // ways in which this plugin can be used.
-// 
+//
 // Basic AJAX     - http://benalman.com/code/projects/jquery-bbq/examples/fragment-basic/
 // Advanced AJAX  - http://benalman.com/code/projects/jquery-bbq/examples/fragment-advanced/
 // jQuery UI Tabs - http://benalman.com/code/projects/jquery-bbq/examples/fragment-jquery-ui-tabs/
 // Deparam        - http://benalman.com/code/projects/jquery-bbq/examples/deparam/
-// 
+//
 // About: Support and Testing
-// 
+//
 // Information about what version or versions of jQuery this plugin has been
 // tested with, what browsers it has been tested in, and where the unit tests
 // reside (so you can test it yourself).
-// 
+//
 // jQuery Versions - 1.2.6, 1.3.2, 1.4.1, 1.4.2
 // Browsers Tested - Internet Explorer 6-8, Firefox 2-4, Chrome 5-6, Safari 3.2-5,
 //                   Opera 9.6-10.60, iPhone 3.1, Android 1.6-2.2, BlackBerry 4.6-5.
 // Unit Tests      - http://benalman.com/code/projects/jquery-bbq/unit/
-// 
+//
 // About: Release History
-// 
+//
 // 1.3pre - (8/26/2010) Integrated <jQuery hashchange event> v1.3, which adds
 //         document.title and document.domain support in IE6/7, BlackBerry
 //         support, better Iframe hiding for accessibility reasons, and the new
@@ -20703,12 +20703,12 @@ var tooltip = $.widget( "ui.tooltip", {
 
 (function($,window){
   '$:nomunge'; // Used by YUI compressor.
-  
+
   // Some convenient shortcuts.
   var undefined,
     aps = Array.prototype.slice,
     decode = decodeURIComponent,
-    
+
     // Method / object references.
     jq_param = $.param,
     jq_param_sorted,
@@ -20720,7 +20720,7 @@ var tooltip = $.widget( "ui.tooltip", {
     jq_bbq_getState,
     jq_elemUrlAttr,
     special = $.event.special,
-    
+
     // Reused strings.
     str_hashchange = 'hashchange',
     str_querystring = 'querystring',
@@ -20728,79 +20728,79 @@ var tooltip = $.widget( "ui.tooltip", {
     str_elemUrlAttr = 'elemUrlAttr',
     str_href = 'href',
     str_src = 'src',
-    
+
     // Reused RegExp.
     re_params_querystring = /^.*\?|#.*$/g,
     re_params_fragment,
     re_fragment,
     re_no_escape,
-    
+
     ajax_crawlable,
     fragment_prefix,
-    
+
     // Used by jQuery.elemUrlAttr.
     elemUrlAttr_cache = {};
-  
+
   // A few commonly used bits, broken out to help reduce minified file size.
-  
+
   function is_string( arg ) {
     return typeof arg === 'string';
   };
-  
+
   // Why write the same function twice? Let's curry! Mmmm, curry..
-  
+
   function curry( func ) {
     var args = aps.call( arguments, 1 );
-    
+
     return function() {
       return func.apply( this, args.concat( aps.call( arguments ) ) );
     };
   };
-  
+
   // Get location.hash (or what you'd expect location.hash to be) sans any
   // leading #. Thanks for making this necessary, Firefox!
   function get_fragment( url ) {
     return url.replace( re_fragment, '$2' );
   };
-  
+
   // Get location.search (or what you'd expect location.search to be) sans any
   // leading #. Thanks for making this necessary, IE6!
   function get_querystring( url ) {
     return url.replace( /(?:^[^?#]*\?([^#]*).*$)?.*/, '$1' );
   };
-  
+
   // Section: Param (to string)
-  // 
+  //
   // Method: jQuery.param.querystring
-  // 
+  //
   // Retrieve the query string from a URL or if no arguments are passed, the
   // current window.location.href.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.param.querystring( [ url ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  url - (String) A URL containing query string params to be parsed. If url
   //    is not passed, the current window.location.href is used.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (String) The parsed query string, with any leading "?" removed.
   //
-  
+
   // Method: jQuery.param.querystring (build url)
-  // 
+  //
   // Merge a URL, with or without pre-existing query string params, plus any
   // object, params string or URL containing query string params into a new URL.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.param.querystring( url, params [, merge_mode ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  url - (String) A valid URL for params to be merged into. This URL may
   //    contain a query string and/or fragment (hash).
   //  params - (String) A params string or URL containing query string params to
@@ -20808,47 +20808,47 @@ var tooltip = $.widget( "ui.tooltip", {
   //  params - (Object) A params object to be merged into url.
   //  merge_mode - (Number) Merge behavior defaults to 0 if merge_mode is not
   //    specified, and is as-follows:
-  // 
+  //
   //    * 0: params in the params argument will override any query string
   //         params in url.
   //    * 1: any query string params in url will override params in the params
   //         argument.
   //    * 2: params argument will completely replace any query string in url.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (String) A URL with a urlencoded query string in the format '?a=b&c=d&e=f'.
-  
+
   // Method: jQuery.param.fragment
-  // 
+  //
   // Retrieve the fragment (hash) from a URL or if no arguments are passed, the
   // current window.location.href.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.param.fragment( [ url ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  url - (String) A URL containing fragment (hash) params to be parsed. If
   //    url is not passed, the current window.location.href is used.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (String) The parsed fragment (hash) string, with any leading "#" removed.
-  
+
   // Method: jQuery.param.fragment (build url)
-  // 
+  //
   // Merge a URL, with or without pre-existing fragment (hash) params, plus any
   // object, params string or URL containing fragment (hash) params into a new
   // URL.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.param.fragment( url, params [, merge_mode ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  url - (String) A valid URL for params to be merged into. This URL may
   //    contain a query string and/or fragment (hash).
   //  params - (String) A params string or URL containing fragment (hash) params
@@ -20856,59 +20856,59 @@ var tooltip = $.widget( "ui.tooltip", {
   //  params - (Object) A params object to be merged into url.
   //  merge_mode - (Number) Merge behavior defaults to 0 if merge_mode is not
   //    specified, and is as-follows:
-  // 
+  //
   //    * 0: params in the params argument will override any fragment (hash)
   //         params in url.
   //    * 1: any fragment (hash) params in url will override params in the
   //         params argument.
   //    * 2: params argument will completely replace any query string in url.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (String) A URL with a urlencoded fragment (hash) in the format '#a=b&c=d&e=f'.
-  
+
   function jq_param_sub( is_fragment, get_func, url, params, merge_mode ) {
     var result,
       qs,
       matches,
       url_params,
       hash;
-    
+
     if ( params !== undefined ) {
       // Build URL by merging params into url string.
-      
+
       // matches[1] = url part that precedes params, not including trailing ?/#
       // matches[2] = params, not including leading ?/#
       // matches[3] = if in 'querystring' mode, hash including leading #, otherwise ''
       matches = url.match( is_fragment ? re_fragment : /^([^#?]*)\??([^#]*)(#?.*)/ );
-      
+
       // Get the hash if in 'querystring' mode, and it exists.
       hash = matches[3] || '';
-      
+
       if ( merge_mode === 2 && is_string( params ) ) {
         // If merge_mode is 2 and params is a string, merge the fragment / query
         // string into the URL wholesale, without converting it into an object.
         qs = params.replace( is_fragment ? re_params_fragment : re_params_querystring, '' );
-        
+
       } else {
         // Convert relevant params in url to object.
         url_params = jq_deparam( matches[2] );
-        
+
         params = is_string( params )
-          
+
           // Convert passed params string into object.
           ? jq_deparam[ is_fragment ? str_fragment : str_querystring ]( params )
-          
+
           // Passed params object.
           : params;
-        
+
         qs = merge_mode === 2 ? params                              // passed params replace url params
           : merge_mode === 1  ? $.extend( {}, params, url_params )  // url params override passed params
           : $.extend( {}, url_params, params );                     // passed params override url params
-        
+
         // Convert params object into a sorted params string.
         qs = jq_param_sorted( qs );
-        
+
         // Unescape characters specified via $.param.noEscape. Since only hash-
         // history users have requested this feature, it's only enabled for
         // fragment-related params strings.
@@ -20916,30 +20916,30 @@ var tooltip = $.widget( "ui.tooltip", {
           qs = qs.replace( re_no_escape, decode );
         }
       }
-      
+
       // Build URL from the base url, querystring and hash. In 'querystring'
       // mode, ? is only added if a query string exists. In 'fragment' mode, #
       // is always added.
       result = matches[1] + ( is_fragment ? fragment_prefix : qs || !matches[1] ? '?' : '' ) + qs + hash;
-      
+
     } else {
       // If URL was passed in, parse params from URL string, otherwise parse
       // params from window.location.href.
       result = get_func( url !== undefined ? url : location.href );
     }
-    
+
     return result;
   };
-  
+
   jq_param[ str_querystring ]                  = curry( jq_param_sub, 0, get_querystring );
   jq_param[ str_fragment ] = jq_param_fragment = curry( jq_param_sub, 1, get_fragment );
-  
+
   // Method: jQuery.param.sorted
-  // 
+  //
   // Returns a params string equivalent to that returned by the internal
   // jQuery.param method, but sorted, which makes it suitable for use as a
   // cache key.
-  // 
+  //
   // For example, in most browsers jQuery.param({z:1,a:2}) returns "z=1&a=2"
   // and jQuery.param({a:2,z:1}) returns "a=2&z=1". Even though both the
   // objects being serialized and the resulting params strings are equivalent,
@@ -20948,96 +20948,96 @@ var tooltip = $.widget( "ui.tooltip", {
   // the strings are different (even though the data described by them is the
   // same). By sorting the params string, unecessary hashchange event triggering
   // can be avoided.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.param.sorted( obj [, traditional ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  obj - (Object) An object to be serialized.
   //  traditional - (Boolean) Params deep/shallow serialization mode. See the
   //    documentation at http://api.jquery.com/jQuery.param/ for more detail.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (String) A sorted params string.
-  
+
   jq_param.sorted = jq_param_sorted = function( a, traditional ) {
     var arr = [],
       obj = {};
-    
+
     $.each( jq_param( a, traditional ).split( '&' ), function(i,v){
       var key = v.replace( /(?:%5B|=).*$/, '' ),
         key_obj = obj[ key ];
-      
+
       if ( !key_obj ) {
         key_obj = obj[ key ] = [];
         arr.push( key );
       }
-      
+
       key_obj.push( v );
     });
-    
+
     return $.map( arr.sort(), function(v){
       return obj[ v ];
     }).join( '&' );
   };
-  
+
   // Method: jQuery.param.fragment.noEscape
-  // 
+  //
   // Specify characters that will be left unescaped when fragments are created
   // or merged using <jQuery.param.fragment>, or when the fragment is modified
   // using <jQuery.bbq.pushState>. This option only applies to serialized data
   // object fragments, and not set-as-string fragments. Does not affect the
   // query string. Defaults to ",/" (comma, forward slash).
-  // 
+  //
   // Note that this is considered a purely aesthetic option, and will help to
   // create URLs that "look pretty" in the address bar or bookmarks, without
   // affecting functionality in any way. That being said, be careful to not
   // unescape characters that are used as delimiters or serve a special
   // purpose, such as the "#?&=+" (octothorpe, question mark, ampersand,
   // equals, plus) characters.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.param.fragment.noEscape( [ chars ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  chars - (String) The characters to not escape in the fragment. If
   //    unspecified, defaults to empty string (escape all characters).
-  // 
+  //
   // Returns:
-  // 
+  //
   //  Nothing.
-  
+
   jq_param_fragment.noEscape = function( chars ) {
     chars = chars || '';
     var arr = $.map( chars.split(''), encodeURIComponent );
     re_no_escape = new RegExp( arr.join('|'), 'g' );
   };
-  
+
   // A sensible default. These are the characters people seem to complain about
   // "uglifying up the URL" the most.
   jq_param_fragment.noEscape( ',/' );
-  
+
   // Method: jQuery.param.fragment.ajaxCrawlable
-  // 
+  //
   // TODO: DESCRIBE
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.param.fragment.ajaxCrawlable( [ state ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  state - (Boolean) TODO: DESCRIBE
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (Boolean) The current ajaxCrawlable state.
-  
+
   jq_param_fragment.ajaxCrawlable = function( state ) {
     if ( state !== undefined ) {
       if ( state ) {
@@ -21051,38 +21051,38 @@ var tooltip = $.widget( "ui.tooltip", {
       }
       ajax_crawlable = !!state;
     }
-    
+
     return ajax_crawlable;
   };
-  
+
   jq_param_fragment.ajaxCrawlable( 0 );
-  
+
   // Section: Deparam (from string)
-  // 
+  //
   // Method: jQuery.deparam
-  // 
+  //
   // Deserialize a params string into an object, optionally coercing numbers,
   // booleans, null and undefined values; this method is the counterpart to the
   // internal jQuery.param method.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.deparam( params [, coerce ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  params - (String) A params string to be parsed.
   //  coerce - (Boolean) If true, coerces any numbers or true, false, null, and
   //    undefined to their actual value. Defaults to false if omitted.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (Object) An object representing the deserialized params string.
-  
+
   $.deparam = jq_deparam = function( params, coerce ) {
     var obj = {},
       coerce_types = { 'true': !0, 'false': !1, 'null': null };
-    
+
     // Iterate over all name=value pairs.
     $.each( params.replace( /\+/g, ' ' ).split( '&' ), function(j,v){
       var param = v.split( '=' ),
@@ -21090,32 +21090,32 @@ var tooltip = $.widget( "ui.tooltip", {
         val,
         cur = obj,
         i = 0,
-        
+
         // If key is more complex than 'foo', like 'a[]' or 'a[b][c]', split it
         // into its component parts.
         keys = key.split( '][' ),
         keys_last = keys.length - 1;
-      
+
       // If the first keys part contains [ and the last ends with ], then []
       // are correctly balanced.
       if ( /\[/.test( keys[0] ) && /\]$/.test( keys[ keys_last ] ) ) {
         // Remove the trailing ] from the last keys part.
         keys[ keys_last ] = keys[ keys_last ].replace( /\]$/, '' );
-        
+
         // Split first keys part into two parts on the [ and add them back onto
         // the beginning of the keys array.
         keys = keys.shift().split('[').concat( keys );
-        
+
         keys_last = keys.length - 1;
       } else {
         // Basic 'foo' style key.
         keys_last = 0;
       }
-      
+
       // Are we dealing with a name=value pair, or just a name?
       if ( param.length === 2 ) {
         val = decode( param[1] );
-        
+
         // Coerce values.
         if ( coerce ) {
           val = val && !isNaN(val)            ? +val              // number
@@ -21123,11 +21123,11 @@ var tooltip = $.widget( "ui.tooltip", {
             : coerce_types[val] !== undefined ? coerce_types[val] // true, false, null
             : val;                                                // string
         }
-        
+
         if ( keys_last ) {
           // Complex key, build deep object structure based on a few rules:
           // * The 'cur' pointer starts at the object top-level.
-          // * [] = array push (n is set to array length), [n] = array if n is 
+          // * [] = array push (n is set to array length), [n] = array if n is
           //   numeric, otherwise object.
           // * If at the last keys part, set the value.
           // * For each keys part, if the current level is undefined create an
@@ -21140,26 +21140,26 @@ var tooltip = $.widget( "ui.tooltip", {
               ? cur[key] || ( keys[i+1] && isNaN( keys[i+1] ) ? {} : [] )
               : val;
           }
-          
+
         } else {
           // Simple key, even simpler rules, since only scalars and shallow
           // arrays are allowed.
-          
+
           if ( $.isArray( obj[key] ) ) {
             // val is already an array, so push on the next value.
             obj[key].push( val );
-            
+
           } else if ( obj[key] !== undefined ) {
             // val isn't an array, but since a second value has been specified,
             // convert val into an array.
             obj[key] = [ obj[key], val ];
-            
+
           } else {
             // val is a scalar.
             obj[key] = val;
           }
         }
-        
+
       } else if ( key ) {
         // No value was defined, so set something meaningful.
         obj[key] = coerce
@@ -21167,54 +21167,54 @@ var tooltip = $.widget( "ui.tooltip", {
           : '';
       }
     });
-    
+
     return obj;
   };
-  
+
   // Method: jQuery.deparam.querystring
-  // 
+  //
   // Parse the query string from a URL or the current window.location.href,
   // deserializing it into an object, optionally coercing numbers, booleans,
   // null and undefined values.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.deparam.querystring( [ url ] [, coerce ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  url - (String) An optional params string or URL containing query string
   //    params to be parsed. If url is omitted, the current
   //    window.location.href is used.
   //  coerce - (Boolean) If true, coerces any numbers or true, false, null, and
   //    undefined to their actual value. Defaults to false if omitted.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (Object) An object representing the deserialized params string.
-  
+
   // Method: jQuery.deparam.fragment
-  // 
+  //
   // Parse the fragment (hash) from a URL or the current window.location.href,
   // deserializing it into an object, optionally coercing numbers, booleans,
   // null and undefined values.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.deparam.fragment( [ url ] [, coerce ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  url - (String) An optional params string or URL containing fragment (hash)
   //    params to be parsed. If url is omitted, the current window.location.href
   //    is used.
   //  coerce - (Boolean) If true, coerces any numbers or true, false, null, and
   //    undefined to their actual value. Defaults to false if omitted.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (Object) An object representing the deserialized params string.
-  
+
   function jq_deparam_sub( is_fragment, url_or_params, coerce ) {
     if ( url_or_params === undefined || typeof url_or_params === 'boolean' ) {
       // url_or_params not specified.
@@ -21225,26 +21225,26 @@ var tooltip = $.widget( "ui.tooltip", {
         ? url_or_params.replace( is_fragment ? re_params_fragment : re_params_querystring, '' )
         : url_or_params;
     }
-    
+
     return jq_deparam( url_or_params, coerce );
   };
-  
+
   jq_deparam[ str_querystring ]                    = curry( jq_deparam_sub, 0 );
   jq_deparam[ str_fragment ] = jq_deparam_fragment = curry( jq_deparam_sub, 1 );
-  
+
   // Section: Element manipulation
-  // 
+  //
   // Method: jQuery.elemUrlAttr
-  // 
+  //
   // Get the internal "Default URL attribute per tag" list, or augment the list
   // with additional tag-attribute pairs, in case the defaults are insufficient.
-  // 
+  //
   // In the <jQuery.fn.querystring> and <jQuery.fn.fragment> methods, this list
   // is used to determine which attribute contains the URL to be modified, if
   // an "attr" param is not specified.
-  // 
+  //
   // Default Tag-Attribute List:
-  // 
+  //
   //  a      - href
   //  base   - href
   //  iframe - src
@@ -21253,21 +21253,21 @@ var tooltip = $.widget( "ui.tooltip", {
   //  form   - action
   //  link   - href
   //  script - src
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.elemUrlAttr( [ tag_attr ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  tag_attr - (Object) An object containing a list of tag names and their
   //    associated default attribute names in the format { tag: 'attr', ... } to
   //    be merged into the internal tag-attribute list.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (Object) An object containing all stored tag-attribute values.
-  
+
   // Only define function and set defaults if function doesn't already exist, as
   // the urlInternal plugin will provide this method as well.
   $[ str_elemUrlAttr ] || ($[ str_elemUrlAttr ] = function( obj ) {
@@ -21282,23 +21282,23 @@ var tooltip = $.widget( "ui.tooltip", {
     link: str_href,
     script: str_src
   });
-  
+
   jq_elemUrlAttr = $[ str_elemUrlAttr ];
-  
+
   // Method: jQuery.fn.querystring
-  // 
+  //
   // Update URL attribute in one or more elements, merging the current URL (with
   // or without pre-existing query string params) plus any params object or
   // string into a new URL, which is then set into that attribute. Like
   // <jQuery.param.querystring (build url)>, but for all elements in a jQuery
   // collection.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery('selector').querystring( [ attr, ] params [, merge_mode ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  attr - (String) Optional name of an attribute that will contain a URL to
   //    merge params or url into. See <jQuery.elemUrlAttr> for a list of default
   //    attributes.
@@ -21307,31 +21307,31 @@ var tooltip = $.widget( "ui.tooltip", {
   //    to be merged into the URL attribute.
   //  merge_mode - (Number) Merge behavior defaults to 0 if merge_mode is not
   //    specified, and is as-follows:
-  //    
+  //
   //    * 0: params in the params argument will override any params in attr URL.
   //    * 1: any params in attr URL will override params in the params argument.
   //    * 2: params argument will completely replace any query string in attr
   //         URL.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (jQuery) The initial jQuery collection of elements, but with modified URL
   //  attribute values.
-  
+
   // Method: jQuery.fn.fragment
-  // 
+  //
   // Update URL attribute in one or more elements, merging the current URL (with
   // or without pre-existing fragment/hash params) plus any params object or
   // string into a new URL, which is then set into that attribute. Like
   // <jQuery.param.fragment (build url)>, but for all elements in a jQuery
   // collection.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery('selector').fragment( [ attr, ] params [, merge_mode ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  attr - (String) Optional name of an attribute that will contain a URL to
   //    merge params into. See <jQuery.elemUrlAttr> for a list of default
   //    attributes.
@@ -21340,17 +21340,17 @@ var tooltip = $.widget( "ui.tooltip", {
   //    string to be merged into the URL attribute.
   //  merge_mode - (Number) Merge behavior defaults to 0 if merge_mode is not
   //    specified, and is as-follows:
-  //    
+  //
   //    * 0: params in the params argument will override any params in attr URL.
   //    * 1: any params in attr URL will override params in the params argument.
   //    * 2: params argument will completely replace any fragment (hash) in attr
   //         URL.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (jQuery) The initial jQuery collection of elements, but with modified URL
   //  attribute values.
-  
+
   function jq_fn_sub( mode, force_attr, params, merge_mode ) {
     if ( !is_string( params ) && typeof params !== 'object' ) {
       // force_attr not specified.
@@ -21358,180 +21358,180 @@ var tooltip = $.widget( "ui.tooltip", {
       params = force_attr;
       force_attr = undefined;
     }
-    
+
     return this.each(function(){
       var that = $(this),
-        
+
         // Get attribute specified, or default specified via $.elemUrlAttr.
         attr = force_attr || jq_elemUrlAttr()[ ( this.nodeName || '' ).toLowerCase() ] || '',
-        
+
         // Get URL value.
         url = attr && that.attr( attr ) || '';
-      
+
       // Update attribute with new URL.
       that.attr( attr, jq_param[ mode ]( url, params, merge_mode ) );
     });
-    
+
   };
-  
+
   $.fn[ str_querystring ] = curry( jq_fn_sub, str_querystring );
   $.fn[ str_fragment ]    = curry( jq_fn_sub, str_fragment );
-  
+
   // Section: History, hashchange event
-  // 
+  //
   // Method: jQuery.bbq.pushState
-  // 
+  //
   // Adds a 'state' into the browser history at the current position, setting
   // location.hash and triggering any bound <hashchange event> callbacks
   // (provided the new state is different than the previous state).
-  // 
+  //
   // If no arguments are passed, an empty state is created, which is just a
   // shortcut for jQuery.bbq.pushState( {}, 2 ).
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.bbq.pushState( [ params [, merge_mode ] ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  params - (String) A serialized params string or a hash string beginning
   //    with # to merge into location.hash.
   //  params - (Object) A params object to merge into location.hash.
   //  merge_mode - (Number) Merge behavior defaults to 0 if merge_mode is not
   //    specified (unless a hash string beginning with # is specified, in which
   //    case merge behavior defaults to 2), and is as-follows:
-  // 
+  //
   //    * 0: params in the params argument will override any params in the
   //         current state.
   //    * 1: any params in the current state will override params in the params
   //         argument.
   //    * 2: params argument will completely replace current state.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  Nothing.
-  // 
+  //
   // Additional Notes:
-  // 
+  //
   //  * Setting an empty state may cause the browser to scroll.
   //  * Unlike the fragment and querystring methods, if a hash string beginning
   //    with # is specified as the params agrument, merge_mode defaults to 2.
-  
+
   jq_bbq.pushState = jq_bbq_pushState = function( params, merge_mode ) {
     if ( is_string( params ) && /^#/.test( params ) && merge_mode === undefined ) {
       // Params string begins with # and merge_mode not specified, so completely
       // overwrite window.location.hash.
       merge_mode = 2;
     }
-    
+
     var has_args = params !== undefined,
       // Merge params into window.location using $.param.fragment.
       url = jq_param_fragment( location.href,
         has_args ? params : {}, has_args ? merge_mode : 2 );
-    
+
     // Set new window.location.href. Note that Safari 3 & Chrome barf on
     // location.hash = '#' so the entire URL is set.
     location.href = url;
   };
-  
+
   // Method: jQuery.bbq.getState
-  // 
+  //
   // Retrieves the current 'state' from the browser history, parsing
   // location.hash for a specific key or returning an object containing the
   // entire state, optionally coercing numbers, booleans, null and undefined
   // values.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.bbq.getState( [ key ] [, coerce ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  key - (String) An optional state key for which to return a value.
   //  coerce - (Boolean) If true, coerces any numbers or true, false, null, and
   //    undefined to their actual value. Defaults to false.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (Anything) If key is passed, returns the value corresponding with that key
   //    in the location.hash 'state', or undefined. If not, an object
   //    representing the entire 'state' is returned.
-  
+
   jq_bbq.getState = jq_bbq_getState = function( key, coerce ) {
     return key === undefined || typeof key === 'boolean'
       ? jq_deparam_fragment( key ) // 'key' really means 'coerce' here
       : jq_deparam_fragment( coerce )[ key ];
   };
-  
+
   // Method: jQuery.bbq.removeState
-  // 
+  //
   // Remove one or more keys from the current browser history 'state', creating
   // a new state, setting location.hash and triggering any bound
   // <hashchange event> callbacks (provided the new state is different than
   // the previous state).
-  // 
+  //
   // If no arguments are passed, an empty state is created, which is just a
   // shortcut for jQuery.bbq.pushState( {}, 2 ).
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery.bbq.removeState( [ key [, key ... ] ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  key - (String) One or more key values to remove from the current state,
   //    passed as individual arguments.
   //  key - (Array) A single array argument that contains a list of key values
   //    to remove from the current state.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  Nothing.
-  // 
+  //
   // Additional Notes:
-  // 
+  //
   //  * Setting an empty state may cause the browser to scroll.
-  
+
   jq_bbq.removeState = function( arr ) {
     var state = {};
-    
+
     // If one or more arguments is passed..
     if ( arr !== undefined ) {
-      
+
       // Get the current state.
       state = jq_bbq_getState();
-      
+
       // For each passed key, delete the corresponding property from the current
       // state.
       $.each( $.isArray( arr ) ? arr : arguments, function(i,v){
         delete state[ v ];
       });
     }
-    
+
     // Set the state, completely overriding any existing state.
     jq_bbq_pushState( state, 2 );
   };
-  
+
   // Event: hashchange event (BBQ)
-  // 
+  //
   // Usage in jQuery 1.4 and newer:
-  // 
+  //
   // In jQuery 1.4 and newer, the event object passed into any hashchange event
   // callback is augmented with a copy of the location.hash fragment at the time
   // the event was triggered as its event.fragment property. In addition, the
   // event.getState method operates on this property (instead of location.hash)
   // which allows this fragment-as-a-state to be referenced later, even after
   // window.location may have changed.
-  // 
+  //
   // Note that event.fragment and event.getState are not defined according to
   // W3C (or any other) specification, but will still be available whether or
   // not the hashchange event exists natively in the browser, because of the
   // utility they provide.
-  // 
+  //
   // The event.fragment property contains the output of <jQuery.param.fragment>
   // and the event.getState method is equivalent to the <jQuery.bbq.getState>
   // method.
-  // 
+  //
   // > $(window).bind( 'hashchange', function( event ) {
   // >   var hash_str = event.fragment,
   // >     param_obj = event.getState(),
@@ -21539,13 +21539,13 @@ var tooltip = $.widget( "ui.tooltip", {
   // >     param_val_coerced = event.getState( 'param_name', true );
   // >   ...
   // > });
-  // 
+  //
   // Usage in jQuery 1.3.2:
-  // 
+  //
   // In jQuery 1.3.2, the event object cannot to be augmented as in jQuery 1.4+,
   // so the fragment state isn't bound to the event object and must instead be
   // parsed using the <jQuery.param.fragment> and <jQuery.bbq.getState> methods.
-  // 
+  //
   // > $(window).bind( 'hashchange', function( event ) {
   // >   var hash_str = $.param.fragment(),
   // >     param_obj = $.bbq.getState(),
@@ -21553,26 +21553,26 @@ var tooltip = $.widget( "ui.tooltip", {
   // >     param_val_coerced = $.bbq.getState( 'param_name', true );
   // >   ...
   // > });
-  // 
+  //
   // Additional Notes:
-  // 
+  //
   // * Due to changes in the special events API, jQuery BBQ v1.2 or newer is
   //   required to enable the augmented event object in jQuery 1.4.2 and newer.
   // * See <jQuery hashchange event> for more detailed information.
-  
+
   special[ str_hashchange ] = $.extend( special[ str_hashchange ], {
-    
+
     // Augmenting the event object with the .fragment property and .getState
     // method requires jQuery 1.4 or newer. Note: with 1.3.2, everything will
     // work, but the event won't be augmented)
     add: function( handleObj ) {
       var old_handler;
-      
+
       function new_handler(e) {
         // e.fragment is set to the value of location.hash (with any leading #
         // removed) at the time the event is triggered.
         var hash = e[ str_fragment ] = jq_param_fragment();
-        
+
         // e.getState() works just like $.bbq.getState(), but uses the
         // e.fragment property stored on the event object.
         e.getState = function( key, coerce ) {
@@ -21580,10 +21580,10 @@ var tooltip = $.widget( "ui.tooltip", {
             ? jq_deparam( hash, key ) // 'key' really means 'coerce' here
             : jq_deparam( hash, coerce )[ key ];
         };
-        
+
         old_handler.apply( this, arguments );
       };
-      
+
       // This may seem a little complicated, but it normalizes the special event
       // .add method between jQuery 1.4/1.4.1 and 1.4.2+
       if ( $.isFunction( handleObj ) ) {
@@ -21596,15 +21596,15 @@ var tooltip = $.widget( "ui.tooltip", {
         handleObj.handler = new_handler;
       }
     }
-    
+
   });
-  
+
 })(jQuery,this);
 
 /*!
  * jQuery hashchange event - v1.3 - 7/21/2010
  * http://benalman.com/projects/jquery-hashchange-plugin/
- * 
+ *
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
@@ -21613,59 +21613,59 @@ var tooltip = $.widget( "ui.tooltip", {
 // Script: jQuery hashchange event
 //
 // *Version: 1.3, Last updated: 7/21/2010*
-// 
+//
 // Project Home - http://benalman.com/projects/jquery-hashchange-plugin/
 // GitHub       - http://github.com/cowboy/jquery-hashchange/
 // Source       - http://github.com/cowboy/jquery-hashchange/raw/master/jquery.ba-hashchange.js
 // (Minified)   - http://github.com/cowboy/jquery-hashchange/raw/master/jquery.ba-hashchange.min.js (0.8kb gzipped)
-// 
+//
 // About: License
-// 
+//
 // Copyright (c) 2010 "Cowboy" Ben Alman,
 // Dual licensed under the MIT and GPL licenses.
 // http://benalman.com/about/license/
-// 
+//
 // About: Examples
-// 
+//
 // These working examples, complete with fully commented code, illustrate a few
 // ways in which this plugin can be used.
-// 
+//
 // hashchange event - http://benalman.com/code/projects/jquery-hashchange/examples/hashchange/
 // document.domain - http://benalman.com/code/projects/jquery-hashchange/examples/document_domain/
-// 
+//
 // About: Support and Testing
-// 
+//
 // Information about what version or versions of jQuery this plugin has been
 // tested with, what browsers it has been tested in, and where the unit tests
 // reside (so you can test it yourself).
-// 
+//
 // jQuery Versions - 1.2.6, 1.3.2, 1.4.1, 1.4.2
 // Browsers Tested - Internet Explorer 6-8, Firefox 2-4, Chrome 5-6, Safari 3.2-5,
 //                   Opera 9.6-10.60, iPhone 3.1, Android 1.6-2.2, BlackBerry 4.6-5.
 // Unit Tests      - http://benalman.com/code/projects/jquery-hashchange/unit/
-// 
+//
 // About: Known issues
-// 
+//
 // While this jQuery hashchange event implementation is quite stable and
 // robust, there are a few unfortunate browser bugs surrounding expected
 // hashchange event-based behaviors, independent of any JavaScript
 // window.onhashchange abstraction. See the following examples for more
 // information:
-// 
+//
 // Chrome: Back Button - http://benalman.com/code/projects/jquery-hashchange/examples/bug-chrome-back-button/
 // Firefox: Remote XMLHttpRequest - http://benalman.com/code/projects/jquery-hashchange/examples/bug-firefox-remote-xhr/
 // WebKit: Back Button in an Iframe - http://benalman.com/code/projects/jquery-hashchange/examples/bug-webkit-hash-iframe/
 // Safari: Back Button from a different domain - http://benalman.com/code/projects/jquery-hashchange/examples/bug-safari-back-from-diff-domain/
-// 
-// Also note that should a browser natively support the window.onhashchange 
+//
+// Also note that should a browser natively support the window.onhashchange
 // event, but not report that it does, the fallback polling loop will be used.
-// 
+//
 // About: Release History
-// 
+//
 // 1.3   - (7/21/2010) Reorganized IE6/7 Iframe code to make it more
 //         "removable" for mobile-only development. Added IE6/7 document.title
 //         support. Attempted to make Iframe as hidden as possible by using
-//         techniques from http://www.paciellogroup.com/blog/?p=604. Added 
+//         techniques from http://www.paciellogroup.com/blog/?p=604. Added
 //         support for the "shortcut" format $(window).hashchange( fn ) and
 //         $(window).hashchange() like jQuery provides for built-in events.
 //         Renamed jQuery.hashchangeDelay to <jQuery.fn.hashchange.delay> and
@@ -21690,40 +21690,40 @@ var tooltip = $.widget( "ui.tooltip", {
 
 (function($,window,undefined){
   '$:nomunge'; // Used by YUI compressor.
-  
+
   // Reused string.
   var str_hashchange = 'hashchange',
-    
+
     // Method / object references.
     doc = document,
     fake_onhashchange,
     special = $.event.special,
-    
+
     // Does the browser support window.onhashchange? Note that IE8 running in
     // IE7 compatibility mode reports true for 'onhashchange' in window, even
     // though the event isn't supported, so also test document.documentMode.
     doc_mode = doc.documentMode,
     supports_onhashchange = 'on' + str_hashchange in window && ( doc_mode === undefined || doc_mode > 7 );
-  
+
   // Get location.hash (or what you'd expect location.hash to be) sans any
   // leading #. Thanks for making this necessary, Firefox!
   function get_fragment( url ) {
     url = url || location.href;
     return '#' + url.replace( /^[^#]*#?(.*)$/, '$1' );
   };
-  
+
   // Method: jQuery.fn.hashchange
-  // 
+  //
   // Bind a handler to the window.onhashchange event or trigger all bound
   // window.onhashchange event handlers. This behavior is consistent with
   // jQuery's built-in event handlers.
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery(window).hashchange( [ handler ] );
-  // 
+  //
   // Arguments:
-  // 
+  //
   //  handler - (Function) Optional handler to be bound to the hashchange
   //    event. This is a "shortcut" for the more verbose form:
   //    jQuery(window).bind( 'hashchange', handler ). If handler is omitted,
@@ -21731,127 +21731,127 @@ var tooltip = $.widget( "ui.tooltip", {
   //    is a shortcut for the more verbose
   //    jQuery(window).trigger( 'hashchange' ). These forms are described in
   //    the <hashchange event> section.
-  // 
+  //
   // Returns:
-  // 
+  //
   //  (jQuery) The initial jQuery collection of elements.
-  
+
   // Allow the "shortcut" format $(elem).hashchange( fn ) for binding and
   // $(elem).hashchange() for triggering, like jQuery does for built-in events.
   $.fn[ str_hashchange ] = function( fn ) {
     return fn ? this.bind( str_hashchange, fn ) : this.trigger( str_hashchange );
   };
-  
+
   // Property: jQuery.fn.hashchange.delay
-  // 
+  //
   // The numeric interval (in milliseconds) at which the <hashchange event>
   // polling loop executes. Defaults to 50.
-  
+
   // Property: jQuery.fn.hashchange.domain
-  // 
+  //
   // If you're setting document.domain in your JavaScript, and you want hash
   // history to work in IE6/7, not only must this property be set, but you must
   // also set document.domain BEFORE jQuery is loaded into the page. This
   // property is only applicable if you are supporting IE6/7 (or IE8 operating
   // in "IE7 compatibility" mode).
-  // 
+  //
   // In addition, the <jQuery.fn.hashchange.src> property must be set to the
   // path of the included "document-domain.html" file, which can be renamed or
   // modified if necessary (note that the document.domain specified must be the
   // same in both your main JavaScript as well as in this file).
-  // 
+  //
   // Usage:
-  // 
+  //
   // jQuery.fn.hashchange.domain = document.domain;
-  
+
   // Property: jQuery.fn.hashchange.src
-  // 
+  //
   // If, for some reason, you need to specify an Iframe src file (for example,
   // when setting document.domain as in <jQuery.fn.hashchange.domain>), you can
   // do so using this property. Note that when using this property, history
   // won't be recorded in IE6/7 until the Iframe src file loads. This property
   // is only applicable if you are supporting IE6/7 (or IE8 operating in "IE7
   // compatibility" mode).
-  // 
+  //
   // Usage:
-  // 
+  //
   // jQuery.fn.hashchange.src = 'path/to/file.html';
-  
+
   $.fn[ str_hashchange ].delay = 50;
   /*
   $.fn[ str_hashchange ].domain = null;
   $.fn[ str_hashchange ].src = null;
   */
-  
+
   // Event: hashchange event
-  // 
+  //
   // Fired when location.hash changes. In browsers that support it, the native
   // HTML5 window.onhashchange event is used, otherwise a polling loop is
   // initialized, running every <jQuery.fn.hashchange.delay> milliseconds to
   // see if the hash has changed. In IE6/7 (and IE8 operating in "IE7
   // compatibility" mode), a hidden Iframe is created to allow the back button
   // and hash-based history to work.
-  // 
+  //
   // Usage as described in <jQuery.fn.hashchange>:
-  // 
+  //
   // > // Bind an event handler.
   // > jQuery(window).hashchange( function(e) {
   // >   var hash = location.hash;
   // >   ...
   // > });
-  // > 
+  // >
   // > // Manually trigger the event handler.
   // > jQuery(window).hashchange();
-  // 
+  //
   // A more verbose usage that allows for event namespacing:
-  // 
+  //
   // > // Bind an event handler.
   // > jQuery(window).bind( 'hashchange', function(e) {
   // >   var hash = location.hash;
   // >   ...
   // > });
-  // > 
+  // >
   // > // Manually trigger the event handler.
   // > jQuery(window).trigger( 'hashchange' );
-  // 
+  //
   // Additional Notes:
-  // 
+  //
   // * The polling loop and Iframe are not created until at least one handler
   //   is actually bound to the 'hashchange' event.
   // * If you need the bound handler(s) to execute immediately, in cases where
   //   a location.hash exists on page load, via bookmark or page refresh for
-  //   example, use jQuery(window).hashchange() or the more verbose 
+  //   example, use jQuery(window).hashchange() or the more verbose
   //   jQuery(window).trigger( 'hashchange' ).
   // * The event can be bound before DOM ready, but since it won't be usable
   //   before then in IE6/7 (due to the necessary Iframe), recommended usage is
   //   to bind it inside a DOM ready handler.
-  
+
   // Override existing $.event.special.hashchange methods (allowing this plugin
   // to be defined after jQuery BBQ in BBQ's source code).
   special[ str_hashchange ] = $.extend( special[ str_hashchange ], {
-    
+
     // Called only when the first 'hashchange' event is bound to window.
     setup: function() {
       // If window.onhashchange is supported natively, there's nothing to do..
       if ( supports_onhashchange ) { return false; }
-      
+
       // Otherwise, we need to create our own. And we don't want to call this
       // until the user binds to the event, just in case they never do, since it
       // will create a polling loop and possibly even a hidden Iframe.
       $( fake_onhashchange.start );
     },
-    
+
     // Called only when the last 'hashchange' event is unbound from window.
     teardown: function() {
       // If window.onhashchange is supported natively, there's nothing to do..
       if ( supports_onhashchange ) { return false; }
-      
+
       // Otherwise, we need to stop ours (if possible).
       $( fake_onhashchange.stop );
     }
-    
+
   });
-  
+
   // fake_onhashchange does all the work of triggering the window.onhashchange
   // event for browsers that don't natively support it, including creating a
   // polling loop to watch for hash changes and in IE 6/7 creating a hidden
@@ -21859,44 +21859,44 @@ var tooltip = $.widget( "ui.tooltip", {
   fake_onhashchange = (function(){
     var self = {},
       timeout_id,
-      
+
       // Remember the initial hash so it doesn't get triggered immediately.
       last_hash = get_fragment(),
-      
+
       fn_retval = function(val){ return val; },
       history_set = fn_retval,
       history_get = fn_retval;
-    
+
     // Start the polling loop.
     self.start = function() {
       timeout_id || poll();
     };
-    
+
     // Stop the polling loop.
     self.stop = function() {
       timeout_id && clearTimeout( timeout_id );
       timeout_id = undefined;
     };
-    
+
     // This polling loop checks every $.fn.hashchange.delay milliseconds to see
     // if location.hash has changed, and triggers the 'hashchange' event on
     // window when necessary.
     function poll() {
       var hash = get_fragment(),
         history_hash = history_get( last_hash );
-      
+
       if ( hash !== last_hash ) {
         history_set( last_hash = hash, history_hash );
-        
+
         $(window).trigger( str_hashchange );
-        
+
       } else if ( history_hash !== last_hash ) {
         location.href = location.href.replace( /#.*/, '' ) + history_hash;
       }
-      
+
       timeout_id = setTimeout( poll, $.fn[ str_hashchange ].delay );
     };
-    
+
     // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
     // vvvvvvvvvvvvvvvvvvv REMOVE IF NOT SUPPORTING IE6/7/8 vvvvvvvvvvvvvvvvvvv
     // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
@@ -21906,10 +21906,10 @@ var tooltip = $.widget( "ui.tooltip", {
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     // ^^^^^^^^^^^^^^^^^^^ REMOVE IF NOT SUPPORTING IE6/7/8 ^^^^^^^^^^^^^^^^^^^
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    
+
     return self;
   })();
-  
+
 })(jQuery,this);
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -23554,7 +23554,7 @@ var OptFrontendSharedSessions = /** @class */ (function (_super) {
                             return true; // ALWAYS cause the link to be clicked
                           }
                           var miniSurveyResponse = prompt(surveyItem.prompt);
-            
+
                           // always log every impression, even if miniSurveyResponse is blank,
                           // since we can know how many times that survey question was ever seen:
                           var idToJoin = $(this).attr('data-id');
@@ -23566,7 +23566,7 @@ var OptFrontendSharedSessions = /** @class */ (function (_super) {
                             success: function() {}, // NOP
                             error: function() {},   // NOP
                           });
-            
+
                           return true; // ALWAYS cause the link to be clicked
                         });
                         */
@@ -24386,7 +24386,7 @@ var OptFrontendSharedSessions = /** @class */ (function (_super) {
         var surveyItem = randomlyPickSurveyItem('requestHelp', true);
         if (surveyItem) {
           var miniSurveyResponse = prompt(surveyItem.prompt);
-    
+
           // always log every impression, even if miniSurveyResponse is blank,
           // since we can know how many times that survey question was ever seen:
           var surveyUrl = TogetherJS.config.get("hubBase").replace(/\/*$/, "") + "/survey";
@@ -25619,7 +25619,7 @@ this.diff_match_patch=diff_match_patch;this.DIFF_DELETE=-1;this.DIFF_INSERT=1;th
 /* WEBPACK VAR INJECTION */(function(jQuery) {/*
  * jQuery doTimeout: Like setTimeout, but better! - v1.0 - 3/3/2010
  * http://benalman.com/projects/jquery-dotimeout-plugin/
- * 
+ *
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
@@ -25636,7 +25636,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "/* CSS accompanying ../visualize.html */\n\nh1 {\n  font-weight: normal;\n  font-size: 20pt;\n  font-family: georgia, serif;\n  line-height: 1em;  /* enforce single spacing so that Georgia works */\n\n  margin-top: 0px;\n  margin-bottom: 8px;\n}\n\nh2 {\n  font-size: 12pt;\n  font-weight: normal;\n  font-family: georgia, serif;\n  line-height: 1.1em; /* enforce single spacing so that Georgia works */\n\n  margin-top: 2px;\n  margin-bottom: 20px;\n}\n\n\nbody {\n  background-color: white;\n  font-family: verdana, arial, helvetica, sans-serif;\n  font-size: 10pt;\n}\n\na,\na:visited,\na:hover {\n  color: #3D58A2;\n}\n\nspan {\n  padding: 0px;\n}\n\n#optionsPane {\n  margin-top: 15px;\n  margin-bottom: 20px;\n  line-height: 150%;\n}\n\ntable#pyOutputPane {\n  padding: 10px;\n}\n\n#pyInputPane, #loadingPane {\n  margin-top: 10px;\n  margin-bottom: 20px;\n\n  max-width: 700px;\n  /* center align */\n  margin-left: auto;\n  margin-right: auto;\n}\n\n#loadingPane {\n  margin-bottom: 5px;\n}\n\n#codeInputPane {\n  margin-top: 5px;\n  font-size: 12pt;\n  border: 1px solid #ddd;\n}\n\n#codeInputWarnings {\n  margin-bottom: 8px;\n}\n\nbutton.smallBtn {\n  font-size: 10pt;\n  padding: 3px;\n}\n\nbutton.bigBtn {\n  font-size: 12pt;\n  padding: 6px;\n  margin-top: 0px;\n}\n\nbutton.surveyBtn {\n  font-size: 8pt;\n  margin-top: 8px;\n}\n\nbutton.surveyBtnBig {\n  font-size: 11pt;\n  padding: 5px;\n  margin-top: 0px;\n}\n\n#footer {\n  color: #999;\n  font-size: 9pt;\n  border-top: 1px solid #bbbbbb;\n  padding-top: 5px;\n  margin-top: 5px;\n\n  max-width: 700px;\n  /* center align */\n  margin-left: auto;\n  margin-right: auto;\n}\n\n#frontendErrorOutput {\n  color: #e93f34; /* should match brightRed JavaScript variable */\n  font-size: 12pt;\n  line-height: 1.5em;\n  margin-top: 8px;\n}\n\n.togetherjsBtn {\n  /*color: #b80000;*/\n  color: #e93f34;\n  font-size: 9pt;\n  padding: 4px;\n  margin-top: 3px;\n}\n\n/* make this a fixed size with scrollbars for overflow so that the UI doesn't jitter up and down */\n#publicHelpQueue {\n  overflow: auto;\n  height: 95px;\n  margin-bottom: 15px;\n  margin-left: 10px;\n}\n\n.helpQueueSmallText {\n  color: #777;\n  font-size: 8pt;\n}\n\n.redBold {\n  font-weight: bold;\n  color: #e93f34;\n}\n\n#stopRequestHelpBtn {\n  font-size: 9pt;\n  padding: 2px;\n}\n\n#moderationPanel {\n  font-size: 11pt;\n  margin-bottom: 5pt;\n  min-height: 16pt; /* just so things don't jiggle around vertically too much */\n  padding-top: 6px;\n  padding-bottom: 6px;\n  padding-left: 6px;\n  padding-right: 6px;\n  border: 1px solid #e93f34;\n}\n\n.kickLink {\n  font-size: 10pt;\n  margin-right: 4px;\n}\n\n\n#syncBtn {\n font-size: 8pt;\n margin-left: 0px;\n}\n\n#experimentalHeader {\n}\n\n#surveyHeader {\n  margin-left: 100px;\n}\n\n.surveyQ {\n  font-size: 9pt;\n  padding: 2px;\n}\n\n/* necessary for CodeMirror error line highlighting to work! */\n.CodeMirror .errorLine { background: #ffff3f !important; }\n\n\n/* from http://rog.ie/blog/css-star-rater */\n.star-rating {\n  font-size: 0;\n  white-space: nowrap;\n  display: inline-block;\n  /* pgbovine - scale this appropriately with a 5:1 ratio */\n  width: 100px;\n  height: 20px;\n  overflow: hidden;\n  position: relative;\n  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');\n  background-size: contain;\n}\n.star-rating i {\n  opacity: 0;\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 20%;\n  z-index: 1;\n  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');\n  background-size: contain;\n}\n.star-rating input {\n  -moz-appearance: none;\n  -webkit-appearance: none;\n  opacity: 0;\n  display: inline-block;\n  width: 20%;\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  z-index: 2;\n  position: relative;\n}\n.star-rating input:hover + i,\n.star-rating input:checked + i {\n  opacity: 1;\n}\n.star-rating i ~ i {\n  width: 40%;\n}\n.star-rating i ~ i ~ i {\n  width: 60%;\n}\n.star-rating i ~ i ~ i ~ i {\n  width: 80%;\n}\n.star-rating i ~ i ~ i ~ i ~ i {\n  width: 100%;\n}\n\n\n#syntaxErrBubbleContents {\n  font-size: 9.5pt;\n  cursor: default;\n}\n\n#syntaxErrHeader {\n  margin-bottom: 3pt;\n}\n\n#syntaxErrCodeDisplay {\n  border: 1px solid #ddd;\n}\n\n#syntaxErrMsg {\n  color: #e93f34; /* should match brightRed JavaScript variable */\n  font-size: 10pt;\n  margin-top: 3pt;\n  margin-bottom: 2pt;\n}\n\n#syntaxErrQuestion {\n  margin-top: 12px;\n}\n\n#syntaxErrTxtInput {\n  margin-top: 3px;\n  margin-bottom: 6px;\n  padding: 2px;\n}\n\n#syntaxErrSubmitBtn, #syntaxErrCloseBtn {\n  margin-right: 8px;\n}\n\n#syntaxErrHideAllLink {\n  font-size: 8pt;\n}\n\n#testCasesPane {\n margin-top: 5px;\n padding-bottom: 5px;\n}\n\n#exampleSnippets {\n border-top: 1px solid #ccc;\n margin-top: 15px;\n}\n\n#showExampleLink {\n  margin-top: 15px;\n}\n\n#instructionsPane {\n margin-bottom: 10px;\n}\n\n/* for SyntaxErrorSurveyBubble */\n\ntextarea.bubbleInputText {\n  font-family: verdana, arial, helvetica, sans-serif;\n\tfont-size: 9pt;\n\tline-height: 1.3em;\n}\n\n.qtip-content {\n\tcolor: #333;\n\tbackground-color: #ffffff;\n\n\tmax-width: 390px;\n\twidth: 390px;\n\n\tborder: 2px solid #e93f34;\n\n  cursor: pointer;\n\n\t*border-right-width: 2px;\n\t*border-bottom-width: 2px;\n\n\t-webkit-border-radius: 5px;\n\t-moz-border-radius: 5px;\n\tborder-radius: 5px;\n\n\t-webkit-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);\n\t-moz-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);\n\tbox-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);\n\n\t-webkit-background-clip: padding-box;\n\t-moz-background-clip: padding;\n\tbackground-clip: padding-box;\n}\n", ""]);
+exports.push([module.i, "/* CSS accompanying ../visualize.html */\n\nh1 {\n  font-weight: normal;\n  font-size: 20pt;\n  font-family: georgia, serif;\n  line-height: 1em;  /* enforce single spacing so that Georgia works */\n\n  margin-top: 0px;\n  margin-bottom: 8px;\n}\n\nh2 {\n  font-size: 12pt;\n  font-weight: normal;\n  font-family: georgia, serif;\n  line-height: 1.1em; /* enforce single spacing so that Georgia works */\n\n  margin-top: 2px;\n  margin-bottom: 20px;\n}\n\n\nbody {\n  background-color: white;\n  font-family: verdana, arial, helvetica, sans-serif;\n  font-size: 10pt;\n}\n\na,\na:visited,\na:hover {\n  color: #3D58A2;\n}\n\nspan {\n  padding: 0px;\n}\n\n#optionsPane {\n  margin-top: 15px;\n  margin-bottom: 20px;\n  line-height: 150%;\n}\n\ntable#pyOutputPane {\n  padding: 10px;\n}\n\n#pyInputPane, #loadingPane {\n  position:absolute;\n top:50%;\n left:50%;\n  max-width: 700px;\n transform: translate(-50%, -50%);}\n\n#loadingPane {\n  margin-bottom: 5px;\n}\n\n#codeInputPane {\n  margin-top: 5px;\n  font-size: 12pt;\n  border: 1px solid #ddd;\n}\n\n#codeInputWarnings {\n  margin-bottom: 8px;\n}\n\nbutton.smallBtn {\n  font-size: 10pt;\n  padding: 3px;\n}\n\nbutton.bigBtn {\n  font-size: 12pt;\n  padding: 6px;\n  margin-top: 0px;\n}\n\nbutton.surveyBtn {\n  font-size: 8pt;\n  margin-top: 8px;\n}\n\nbutton.surveyBtnBig {\n  font-size: 11pt;\n  padding: 5px;\n  margin-top: 0px;\n}\n\n#footer {\n  color: #999;\n  font-size: 9pt;\n  border-top: 1px solid #bbbbbb;\n  padding-top: 5px;\n  margin-top: 5px;\n\n  max-width: 700px;\n  /* center align */\n  margin-left: auto;\n  margin-right: auto;\n}\n\n#frontendErrorOutput {\n  color: #e93f34; /* should match brightRed JavaScript variable */\n  font-size: 12pt;\n  line-height: 1.5em;\n  margin-top: 8px;\n}\n\n.togetherjsBtn {\n  /*color: #b80000;*/\n  color: #e93f34;\n  font-size: 9pt;\n  padding: 4px;\n  margin-top: 3px;\n}\n\n/* make this a fixed size with scrollbars for overflow so that the UI doesn't jitter up and down */\n#publicHelpQueue {\n  overflow: auto;\n  height: 95px;\n  margin-bottom: 15px;\n  margin-left: 10px;\n}\n\n.helpQueueSmallText {\n  color: #777;\n  font-size: 8pt;\n}\n\n.redBold {\n  font-weight: bold;\n  color: #e93f34;\n}\n\n#stopRequestHelpBtn {\n  font-size: 9pt;\n  padding: 2px;\n}\n\n#moderationPanel {\n  font-size: 11pt;\n  margin-bottom: 5pt;\n  min-height: 16pt; /* just so things don't jiggle around vertically too much */\n  padding-top: 6px;\n  padding-bottom: 6px;\n  padding-left: 6px;\n  padding-right: 6px;\n  border: 1px solid #e93f34;\n}\n\n.kickLink {\n  font-size: 10pt;\n  margin-right: 4px;\n}\n\n\n#syncBtn {\n font-size: 8pt;\n margin-left: 0px;\n}\n\n#experimentalHeader {\n}\n\n#surveyHeader {\n  margin-left: 100px;\n}\n\n.surveyQ {\n  font-size: 9pt;\n  padding: 2px;\n}\n\n/* necessary for CodeMirror error line highlighting to work! */\n.CodeMirror .errorLine { background: #ffff3f !important; }\n\n\n/* from http://rog.ie/blog/css-star-rater */\n.star-rating {\n  font-size: 0;\n  white-space: nowrap;\n  display: inline-block;\n  /* pgbovine - scale this appropriately with a 5:1 ratio */\n  width: 100px;\n  height: 20px;\n  overflow: hidden;\n  position: relative;\n  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');\n  background-size: contain;\n}\n.star-rating i {\n  opacity: 0;\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 20%;\n  z-index: 1;\n  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');\n  background-size: contain;\n}\n.star-rating input {\n  -moz-appearance: none;\n  -webkit-appearance: none;\n  opacity: 0;\n  display: inline-block;\n  width: 20%;\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  z-index: 2;\n  position: relative;\n}\n.star-rating input:hover + i,\n.star-rating input:checked + i {\n  opacity: 1;\n}\n.star-rating i ~ i {\n  width: 40%;\n}\n.star-rating i ~ i ~ i {\n  width: 60%;\n}\n.star-rating i ~ i ~ i ~ i {\n  width: 80%;\n}\n.star-rating i ~ i ~ i ~ i ~ i {\n  width: 100%;\n}\n\n\n#syntaxErrBubbleContents {\n  font-size: 9.5pt;\n  cursor: default;\n}\n\n#syntaxErrHeader {\n  margin-bottom: 3pt;\n}\n\n#syntaxErrCodeDisplay {\n  border: 1px solid #ddd;\n}\n\n#syntaxErrMsg {\n  color: #e93f34; /* should match brightRed JavaScript variable */\n  font-size: 10pt;\n  margin-top: 3pt;\n  margin-bottom: 2pt;\n}\n\n#syntaxErrQuestion {\n  margin-top: 12px;\n}\n\n#syntaxErrTxtInput {\n  margin-top: 3px;\n  margin-bottom: 6px;\n  padding: 2px;\n}\n\n#syntaxErrSubmitBtn, #syntaxErrCloseBtn {\n  margin-right: 8px;\n}\n\n#syntaxErrHideAllLink {\n  font-size: 8pt;\n}\n\n#testCasesPane {\n margin-top: 5px;\n padding-bottom: 5px;\n}\n\n#exampleSnippets {\n border-top: 1px solid #ccc;\n margin-top: 15px;\n}\n\n#showExampleLink {\n  margin-top: 15px;\n}\n\n#instructionsPane {\n margin-bottom: 10px;\n}\n\n/* for SyntaxErrorSurveyBubble */\n\ntextarea.bubbleInputText {\n  font-family: verdana, arial, helvetica, sans-serif;\n\tfont-size: 9pt;\n\tline-height: 1.3em;\n}\n\n.qtip-content {\n\tcolor: #333;\n\tbackground-color: #ffffff;\n\n\tmax-width: 390px;\n\twidth: 390px;\n\n\tborder: 2px solid #e93f34;\n\n  cursor: pointer;\n\n\t*border-right-width: 2px;\n\t*border-bottom-width: 2px;\n\n\t-webkit-border-radius: 5px;\n\t-moz-border-radius: 5px;\n\tborder-radius: 5px;\n\n\t-webkit-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);\n\t-moz-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);\n\tbox-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);\n\n\t-webkit-background-clip: padding-box;\n\t-moz-background-clip: padding;\n\tbackground-clip: padding-box;\n}\n", ""]);
 
 // exports
 
@@ -26406,7 +26406,7 @@ function QTip(target, options, id, attr)
 		tooltip.toggleClass(disabledClass, disabled);
 
 		tooltip.toggleClass('ui-helper-reset '+createWidgetClass(), on).toggleClass(defaultClass, options.style.def && !on);
-		
+
 		if(elements.content) {
 			elements.content.toggleClass( createWidgetClass('content'), on);
 		}
@@ -26654,7 +26654,7 @@ function QTip(target, options, id, attr)
 				show: $.trim('' + options.show.event).split(' '),
 				hide: $.trim('' + options.hide.event).split(' ')
 			};
-			//IE6 = $.browser.msie && parseInt($.browser.version, 10) === 6; // pgbovine 
+			//IE6 = $.browser.msie && parseInt($.browser.version, 10) === 6; // pgbovine
 
 		// Define show event method
 		function showMethod(event)
@@ -27166,7 +27166,7 @@ function QTip(target, options, id, attr)
 				// Cache event
 				cache.event = $.extend({}, event);
 			}
-	
+
 			// Render the tooltip if showing and it isn't already
 			if(!self.rendered) { return state ? self.render(1) : self; }
 
@@ -27447,8 +27447,8 @@ function QTip(target, options, id, attr)
 				}
 
 				// Adjust for position.fixed tooltips (and also iOS scroll bug in v3.2-4.0 & v4.3-4.3.2)
-				if((PLUGINS.iOS > 3.1 && PLUGINS.iOS < 4.1) || 
-					(PLUGINS.iOS >= 4.3 && PLUGINS.iOS < 4.33) || 
+				if((PLUGINS.iOS > 3.1 && PLUGINS.iOS < 4.1) ||
+					(PLUGINS.iOS >= 4.3 && PLUGINS.iOS < 4.33) ||
 					(!PLUGINS.iOS && type === 'fixed')
 				){
 					position.left -= win.scrollLeft();
@@ -27493,7 +27493,7 @@ function QTip(target, options, id, attr)
 				tooltip.queue(function(next) {
 					// Reset attributes to avoid cross-browser rendering bugs
 					$(this).css({ opacity: '', height: '' });
-					// if($.browser.msie) { this.style.removeAttribute('filter'); } // pgbovine 
+					// if($.browser.msie) { this.style.removeAttribute('filter'); } // pgbovine
 
 					next();
 				});
@@ -27868,7 +27868,7 @@ PLUGINS = QTIP.plugins = {
 	/*
 	* iOS version detection
 	*/
-	iOS: parseFloat( 
+	iOS: parseFloat(
 		('' + (/CPU.*OS ([0-9_]{1,5})|(CPU like).*AppleWebKit.*Mobile/i.exec(navigator.userAgent) || [0,''])[1])
 		.replace('undefined', '3_2').replace('_', '.').replace('_', '')
 	) || FALSE,
@@ -28088,27 +28088,6 @@ if(false) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-// deployed on 2017-05-15:
-var eureka_survey_v1 = "\n  <div id=\"eureka_survey\" style=\"text-align: center; margin-top: 10px; margin-bottom: 15px;\">\n    <div style=\"margin-bottom: 6px;\">Support our research by clicking below whenever you learn something:</div>\n    <button class=\"surveyBtnBig\" type=\"button\">I just cleared up a misunderstanding!</button>\n    <button class=\"surveyBtnBig\" type=\"button\" style=\"margin-left: 12px;\">I just fixed a bug in my code!</button>\n  </div>\n";
-var eureka_prompt_v1 = "What was your misunderstanding or error? (Press 'OK' to submit)";
-// deployed on 2017-05-20:
-/*
-var eureka_survey_v2 = `
-  <div id="eureka_survey" style="text-align: center; margin-top: 10px; margin-bottom: 15px;">
-    <div style="margin-bottom: 6px;">Help us improve this tool by clicking below whenever you learn something:</div>
-    <button class="surveyBtnBig" type="button">I just cleared up a misunderstanding!</button>
-    <button class="surveyBtnBig" type="button" style="margin-left: 8px;">I just fixed a bug in my code!</button>
-  </div>
-`;
-*/
-// a SMALLER variant of eureka_survey_v2, deployed on 2018-03-15
-var eureka_survey_v2 = "\n  <div id=\"eureka_survey\" style=\"text-align: center; margin-top: 10px; margin-bottom: 15px;\">\n    <div style=\"margin-bottom: 6px;\">Help improve this tool by clicking whenever you learn something:</div>\n    <button class=\"smallBtn\" type=\"button\">I just cleared up a misunderstanding!</button>\n    <button class=\"smallBtn\" type=\"button\" style=\"margin-left: 8px;\">I just fixed a bug in my code!</button>\n  </div>\n";
-var eureka_prompt_v2 = "What was your misunderstanding or error? (Press 'OK' to submit)";
-// adjust as versions increase ...
-exports.eureka_survey_version = 'v2';
-exports.eureka_survey = eureka_survey_v2;
-exports.eureka_prompt = eureka_prompt_v2;
-
 
 /***/ }),
 /* 66 */
