@@ -82,9 +82,15 @@ button.smallBtn {
 }
 
 button.bigBtn {
-  font-size: 12pt;
-  padding: 6px;
-  margin-top: 0px;
+  cursor: pointer;
+  display: block;
+  background: #0050ff;
+  color: #fff;
+  margin: 0 auto;
+  padding: .1rem .6rem .4rem .5rem;
+  border: 0;
+  border-radius: 8px;
+  font-size: 11px;
 }
 
 button.surveyBtn {
