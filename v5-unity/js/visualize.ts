@@ -40,22 +40,23 @@ function SyntaxErrorSurveyBubble(parentViz, domID) {
 }
 
 SyntaxErrorSurveyBubble.prototype.destroyQTip = function() {
-  $(this.hashID).qtip('destroy');
+  (<any>$(this.hashID)).qtip('destroy');  //casting <any> to avoid "property does not exist error" - <chai@pathrise>
 }
 
 SyntaxErrorSurveyBubble.prototype.redrawCodelineBubble = function() {
   if (this.parentViz.isOutputLineVisibleForBubbles(this.domID)) {
     if (this.qtipHidden) {
-      $(this.hashID).qtip('show');
+      (<any>$(this.hashID)).qtip('show');
     }
     else {
-      $(this.hashID).qtip('reposition');
+      (<any>$(this.hashID)).qtip('reposition');
     }
 
     this.qtipHidden = false;
+
   }
   else {
-    $(this.hashID).qtip('hide');
+    (<any>$(this.hashID)).qtip('hide');
     this.qtipHidden = true;
   }
 }
@@ -290,7 +291,7 @@ export class OptFrontendWithTestcases extends OptFrontendSharedSessions {
 
       // destroy then create a new tip:
       bub.destroyQTip();
-      $(bub.hashID).qtip({
+      (<any>$(bub.hashID)).qtip({
         show: {
           ready: true, // show on document.ready instead of on mouseenter
           delay: 0,
@@ -514,7 +515,7 @@ export class OptFrontendWithTestcases extends OptFrontendSharedSessions {
 
       // destroy then create a new tip:
       bub.destroyQTip();
-      $(bub.hashID).qtip({
+      (<any>$(bub.hashID)).qtip({
         show: {
           ready: true, // show on document.ready instead of on mouseenter
           delay: 0,

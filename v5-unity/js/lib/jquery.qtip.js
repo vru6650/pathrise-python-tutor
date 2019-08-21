@@ -186,7 +186,7 @@ function QTip(target, options, id, attr)
 		tooltip.toggleClass(disabledClass, disabled);
 
 		tooltip.toggleClass('ui-helper-reset '+createWidgetClass(), on).toggleClass(defaultClass, options.style.def && !on);
-		
+
 		if(elements.content) {
 			elements.content.toggleClass( createWidgetClass('content'), on);
 		}
@@ -434,7 +434,7 @@ function QTip(target, options, id, attr)
 				show: $.trim('' + options.show.event).split(' '),
 				hide: $.trim('' + options.hide.event).split(' ')
 			};
-			//IE6 = $.browser.msie && parseInt($.browser.version, 10) === 6; // pgbovine 
+			//IE6 = $.browser.msie && parseInt($.browser.version, 10) === 6; // pgbovine
 
 		// Define show event method
 		function showMethod(event)
@@ -946,7 +946,7 @@ function QTip(target, options, id, attr)
 				// Cache event
 				cache.event = $.extend({}, event);
 			}
-	
+
 			// Render the tooltip if showing and it isn't already
 			if(!self.rendered) { return state ? self.render(1) : self; }
 
@@ -1227,8 +1227,8 @@ function QTip(target, options, id, attr)
 				}
 
 				// Adjust for position.fixed tooltips (and also iOS scroll bug in v3.2-4.0 & v4.3-4.3.2)
-				if((PLUGINS.iOS > 3.1 && PLUGINS.iOS < 4.1) || 
-					(PLUGINS.iOS >= 4.3 && PLUGINS.iOS < 4.33) || 
+				if((PLUGINS.iOS > 3.1 && PLUGINS.iOS < 4.1) ||
+					(PLUGINS.iOS >= 4.3 && PLUGINS.iOS < 4.33) ||
 					(!PLUGINS.iOS && type === 'fixed')
 				){
 					position.left -= win.scrollLeft();
@@ -1273,7 +1273,7 @@ function QTip(target, options, id, attr)
 				tooltip.queue(function(next) {
 					// Reset attributes to avoid cross-browser rendering bugs
 					$(this).css({ opacity: '', height: '' });
-					// if($.browser.msie) { this.style.removeAttribute('filter'); } // pgbovine 
+					// if($.browser.msie) { this.style.removeAttribute('filter'); } // pgbovine
 
 					next();
 				});
@@ -1648,7 +1648,7 @@ PLUGINS = QTIP.plugins = {
 	/*
 	* iOS version detection
 	*/
-	iOS: parseFloat( 
+	iOS: parseFloat(
 		('' + (/CPU.*OS ([0-9_]{1,5})|(CPU like).*AppleWebKit.*Mobile/i.exec(navigator.userAgent) || [0,''])[1])
 		.replace('undefined', '3_2').replace('_', '.').replace('_', '')
 	) || FALSE,

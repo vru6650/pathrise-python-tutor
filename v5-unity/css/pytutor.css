@@ -38,6 +38,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 div.ExecutionVisualizer {
   /* none for now */
+  padding: 1rem 1.3rem;
+  padding-top: 1rem;
+  padding-right: 1.3rem;
+  padding-bottom: 1rem;
+  padding-left: 1.3rem;
 }
 
 div.ExecutionVisualizer table.visualizer {
@@ -199,6 +204,15 @@ div.ExecutionVisualizer #vcrControls {
 div.ExecutionVisualizer #vcrControls button {
   margin-left: 2px;
   margin-right: 2px;
+  cursor: pointer;
+  /* display: block; */
+  background: #0050ff;
+  color: #fff;
+  margin: 0 auto;
+  padding: .1rem .6rem .4rem .5rem;
+  border: 0;
+  border-radius: 8px;
+  font-size: 11px;
 }
 
 div.ExecutionVisualizer #vcrControls #curInstr {
@@ -212,11 +226,16 @@ div.ExecutionVisualizer #pyStdout {
   padding: 3px;
   font-family: Andale mono, monospace;
 
-  overflow: auto; /* to look pretty on IE */
+
+  overflow: scroll; /* to look pretty on IE */
   /* make sure textarea doesn't grow and stretch */
   resize: none;
 }
 
+/* Trying to make textarea fixed size chai@pathrise */
+#pyStdout{
+  resize: none;
+}
 
 div.ExecutionVisualizer .vizFrame {
   margin-bottom: 20px;
