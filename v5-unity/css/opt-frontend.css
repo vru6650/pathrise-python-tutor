@@ -22,8 +22,8 @@ h2 {
 
 
 body {
-  background-color: white;
-  font-family: verdana, arial, helvetica, sans-serif;
+  background-color: #edeff0;
+  font-family: 'Work Sans', verdana, arial, helvetica, sans-serif;
   font-size: 10pt;
 }
 
@@ -43,18 +43,23 @@ span {
   line-height: 150%;
 }
 
-table#pyOutputPane {
-  padding: 10px;
+#pyOutputPane {
+  position: absolute;
+  top:50%;
+  left:50%;
+
+  max-width: 700px;
+  transform: translate(-50%, -50%);
 }
 
 #pyInputPane, #loadingPane {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  position: absolute;
+  top:50%;
+  left:50%;
 
   max-width: 700px;
-  /* center align */
-  margin-left: auto;
-  margin-right: auto;
+  transform: translate(-50%, -50%);
+
 }
 
 #loadingPane {

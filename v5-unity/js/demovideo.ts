@@ -189,34 +189,34 @@ export class OptDemoVideo {
 
     var starttime = -1;
     var rafHelper = (timestamp) => {
-      assert(this.audioElt); // we will always synchronize with the audio, so if you don't have audio, it's a dealbreaker
-      if (this.isPaused) {
-        return;
-      }
-
-      // keep going until your audio dies:
-      if (!this.audioElt.ended) {
-        this.rafTimerId = requestAnimationFrame(rafHelper);
-
-        // always use the latest values of this.audioElt.currentTime to
-        // calculate the current frame so that we can try to keep the
-        // audio and animation in sync as much as possible:
-        let frameNum = this.secondsToFrames(this.audioElt.currentTime);
-        this.currentFrame = frameNum;
-
-        //console.log('audioElt.currentTime:', this.audioElt.currentTime, frameNum, totalFrames, this.audioElt.ended);
-
-        // TODO: this is an abstraction violation since OptDemoVideo
-        // shouldn't know about #timeSlider, which is part of the GUI!
-        // (maybe tunnel this through a callback?)
-        $("#timeSlider").slider("value", frameNum); // triggers slider 'change' event
-      } else {
-        // set currentFrame and slider to the very end for consistency
-        this.currentFrame = totalFrames;
-        $("#timeSlider").slider("value", totalFrames);
-
-        this.frontend.setPlayPauseButton('paused');
-      }
+      // assert(this.audioElt); // we will always synchronize with the audio, so if you don't have audio, it's a dealbreaker
+      // if (this.isPaused) {
+      //   return;
+      // }
+      //
+      // // keep going until your audio dies:
+      // if (!this.audioElt.ended) {
+      //   this.rafTimerId = requestAnimationFrame(rafHelper);
+      //
+      //   // always use the latest values of this.audioElt.currentTime to
+      //   // calculate the current frame so that we can try to keep the
+      //   // audio and animation in sync as much as possible:
+      //   let frameNum = this.secondsToFrames(this.audioElt.currentTime);
+      //   this.currentFrame = frameNum;
+      //
+      //   //console.log('audioElt.currentTime:', this.audioElt.currentTime, frameNum, totalFrames, this.audioElt.ended);
+      //
+      //   // TODO: this is an abstraction violation since OptDemoVideo
+      //   // shouldn't know about #timeSlider, which is part of the GUI!
+      //   // (maybe tunnel this through a callback?)
+      //   // $("#timeSlider").slider("value", frameNum); // triggers slider 'change' event
+      // } else {
+      //   // set currentFrame and slider to the very end for consistency
+      //   this.currentFrame = totalFrames;
+      //   $("#timeSlider").slider("value", totalFrames);
+      //
+      //   this.frontend.setPlayPauseButton('paused');
+      // }
     }
 
     // kick it off!

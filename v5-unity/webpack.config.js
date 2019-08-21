@@ -74,10 +74,10 @@ module.exports = {
     },
 
     module: {
-        loaders: [
+        rules: [
             { test: /\.css$/, loader: "style-loader!css-loader" }, // CSS
             { test: /\.(png|jpg)$/, loader: 'url-loader' }, // images
-            { test: /\.ts$/, loader: 'ts-loader' } // TypeScript
+            { test: /\.ts$/, loader: 'ts-loader'} // TypeScript
         ]
     },
 

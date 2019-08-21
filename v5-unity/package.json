@@ -12,6 +12,8 @@
     "production-build": "rm -f build/* && webpack && python add_cache_busting_query_strings.py"
   },
   "dependencies": {
+    "@types/jquery": "^3.3.31",
+    "@types/node": "^12.7.2",
     "css-loader": "",
     "fs-extra": "^6.0.1",
     "json-stable-stringify": "^1.0.1",
@@ -21,6 +23,7 @@
     "script-loader": "",
     "style-loader": "",
     "ts-loader": "^3.5.0",
+    "typescript": "^2.8.3",
     "url-loader": ""
   }
 }
