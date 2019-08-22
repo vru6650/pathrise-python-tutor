@@ -204,7 +204,8 @@ export abstract class AbstractBaseFrontend {
 
   setFronendError(lines, ignoreLog=false) {
     $("#frontendErrorOutput").html(lines.map(htmlspecialchars).join('<br/>') +
-                                   (ignoreLog ? '' : '<p/>Read this list of <a target="_blank" href="https://github.com/pgbovine/OnlinePythonTutor/blob/master/unsupported-features.md">UNSUPPORTED FEATURES</a>'));
+                                  (ignoreLog ? '' : '<p/>Review code for errors. It is possible this may be due to unsupported features'));
+                                   // (ignoreLog ? '' : '<p/>Read this list of <a target="_blank" href="https://github.com/pgbovine/OnlinePythonTutor/blob/master/unsupported-features.md">UNSUPPORTED FEATURES</a>'));
 
     // log it to the server as well (unless ignoreLog is on)
     if (!ignoreLog) {

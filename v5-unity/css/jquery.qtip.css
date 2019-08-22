@@ -94,7 +94,7 @@
 
 /* Default tooltip style */
 .qtip-default{
-	display: none; /* disabling qtips */
+	display: none !important; /* disabling qtips */
 	border-width: 1px;
 	border-style: solid;
 	border-color: #F1D031;
