@@ -151,12 +151,17 @@ div.ExecutionVisualizer div#legendDiv {
 
 div.ExecutionVisualizer div#editCodeLinkDiv {
   text-align: center;
-  /*
-  margin-top: 12px;
-  margin-bottom: 4px;
-  */
-  margin: 8px auto;
-  font-size: 11pt;
+  margin-left: 2px;
+  margin-right: 2px;
+  cursor: pointer;
+  /* display: block; */
+  background: #0050ff;
+  color: #fff;
+  margin: 0 auto;
+  padding: .2rem .6rem .4rem .5rem;
+  border: 0;
+  border-radius: 8px;
+  font-size: 11px;
 }
 
 div.ExecutionVisualizer div#annotateLinkDiv {
@@ -747,7 +752,7 @@ div.ExecutionVisualizer .highlight-legend {
 div.ExecutionVisualizer a,
 div.ExecutionVisualizer a:visited,
 div.ExecutionVisualizer a:hover {
-  color: #3D58A2;
+  color: #ffffff;
 }
 
 div.ExecutionVisualizer div#rawUserInputDiv {
