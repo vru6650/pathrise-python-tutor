@@ -22390,9 +22390,9 @@ var AbstractBaseFrontend = /** @class */ (function () {
             pytutor_1.assert(pyState !== '2' && pyState !== '3');
             // 2018-08-19: this is an uncommon use case (only used for https iframe embedding)
             if (jsonp_endpoint.indexOf('https:') == 0) {
-                this.setFronendError(["Error: https execution of non-Python code is not currently supported. [#nonPythonHttps]"]);
-                this.doneExecutingCode();
-                return;
+                // this.setFronendError(["Error: https execution of non-Python code is not currently supported. [#nonPythonHttps]"]);
+                // this.doneExecutingCode();
+                // return;
             }
             var retryOnBackupServer = function () {
                 // first log a #TryBackup error entry:
