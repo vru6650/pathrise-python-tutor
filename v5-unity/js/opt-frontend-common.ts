@@ -181,8 +181,7 @@ export abstract class AbstractBaseFrontend {
       } else {
         this.setFronendError(
                         ["Server error! Your code might have an INFINITE LOOP or be running for too long.",
-                         "The server may also be OVERLOADED. Or you're behind a FIREWALL that blocks access.",
-                         "Try again later. This site is provided for free with no available technical support."]);
+                         "The server may also be OVERLOADED. Or you're behind a FIREWALL that blocks access."]);
       }
       this.doneExecutingCode();
     });
