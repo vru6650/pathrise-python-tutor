@@ -336,8 +336,7 @@ export abstract class AbstractBaseFrontend {
         } else {
           this.setFronendError(
                           ["Unknown error: The server may be OVERLOADED right now; try again later.",
-                           "Your code may also contain UNSUPPORTED FEATURES that this tool cannot handle.",
-                           "Try again later. This site is provided for free with no available technical support. [#NullTrace]"]);
+                           "Your code may also contain UNSUPPORTED FEATURES that this tool cannot handle."]);
         }
       } else {
         // fail-soft to prevent running off of the end of trace
