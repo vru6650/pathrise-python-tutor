@@ -1,6 +1,7 @@
 // Python Tutor: https://github.com/pgbovine/OnlinePythonTutor/
 // Copyright (C) Philip Guo (philip@pgbovine.net)
 // LICENSE: https://github.com/pgbovine/OnlinePythonTutor/blob/master/LICENSE.txt
+import * as ace from './lib/ace/src-min-noconflict/ace'
 
 export const redSadFace = require('./images/red-sad-face.jpg');
 export const yellowHappyFace = require('./images/yellow-happy-face.jpg');

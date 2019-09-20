@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 86);
+/******/ 	return __webpack_require__(__webpack_require__.s = 88);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -22033,8 +22033,8 @@ var pytutor_1 = __webpack_require__(4);
 // objects per page; should still be instantiated as a SINGLETON
 var AbstractBaseFrontend = /** @class */ (function () {
     function AbstractBaseFrontend(params) {
-        var _this = this;
         if (params === void 0) { params = {}; }
+        var _this = this;
         this.sessionUUID = generateUUID(); // remains constant throughout one page load ("session")
         // a cache where each element is a pair:
         // [appState, cached execution trace]
@@ -22653,7 +22653,7 @@ exports.supports_html5_storage = supports_html5_storage;
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var content = __webpack_require__(34);
+var content = __webpack_require__(41);
 
 if (typeof content === 'string') {
   content = [[module.i, content, '']];
@@ -22681,12 +22681,9 @@ if (content.locals) {
 // Copyright (C) Philip Guo (philip@pgbovine.net)
 // LICENSE: https://github.com/pgbovine/OnlinePythonTutor/blob/master/LICENSE.txt
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -22719,7 +22716,7 @@ __webpack_require__(58); // https://momentjs.com/
 __webpack_require__(60); // http://hgoebl.github.io/mobile-detect.js/ https://github.com/hgoebl/mobile-detect.js
 exports.TogetherJS = window.TogetherJS;
 var opt_frontend_common_1 = __webpack_require__(29);
-var opt_frontend_1 = __webpack_require__(35);
+var opt_frontend_1 = __webpack_require__(42);
 var demovideo_1 = __webpack_require__(55);
 var pytutor_1 = __webpack_require__(4);
 // copypasta from pytutor.ts
@@ -24708,13 +24705,55 @@ this.diff_match_patch=diff_match_patch;this.DIFF_DELETE=-1;this.DIFF_INSERT=1;th
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(1)(__webpack_require__(43))
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(1)(__webpack_require__(44))
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(1)(__webpack_require__(45))
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(1)(__webpack_require__(46))
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(1)(__webpack_require__(47))
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(1)(__webpack_require__(48))
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(1)(__webpack_require__(49))
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
 exports = module.exports = __webpack_require__(2)(false);
 // Module
 exports.push([module.i, "/* CSS accompanying ../visualize.html */\n\n.dashboard-title {\n    margin: 0;\n    /* color: #828c96; */\n    font-family: 'Work Sans',-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;\n    font-size: 28px;\n}\n\n.eyebrow {\n    text-transform: uppercase;\n    color: #828c96;\n    margin-bottom: 0;\n    font-size: 16px;\n}\n\n.s4 {\n    height: 40px;\n}\n\n.title-container {\n    max-width: 700px;\n    margin-left: auto;\n    margin-right: auto;\n}\n\nbody {\n    background-color: #edeff0;\n    font-family: 'Work Sans', verdana, arial, helvetica, sans-serif;\n    margin: 0px;\n  /* font-size: 10pt; */\n}\n\na,\na:visited,\na:hover {\n  color: #3D58A2;\n}\n\nspan {\n  padding: 0px;\n}\n\n#optionsPane {\n  margin-top: 15px;\n  margin-bottom: 20px;\n  line-height: 150%;\n}\n\n#pyOutputPane {\n  position: relative;\n/* top: 50%; */\n/* left: 50%; */\n/* transform: translate(-50%, -50%); */\n  /* background-color: #ffff; */\n  border-radius: 8px;\n  display: block;\n  /* overflow: auto; */\n  margin-top: 6%;\n  margin-bottom: 6%;\n  margin-left: 2%;\n  margin-right: 2%;\n}\n\n#pyInputPane, #loadingPane {\n  max-width: 700px;\n  margin-left: auto;\n  margin-right: auto;\n  margin-top: 6%;\n  margin-bottom: 6%;\n\n}\n\n#loadingPane {\n  margin-bottom: 5px;\n}\n\n#codeInputPane {\n  margin-top: 5px;\n  font-size: 12pt;\n  border: 1px solid #ddd;\n}\n\n#codeInputWarnings {\n  margin-bottom: 8px;\n}\n\nbutton.smallBtn {\n  font-size: 10pt;\n  padding: 3px;\n}\n\nbutton.bigBtn {\n  cursor: pointer;\n  display: block;\n  background: #0050ff;\n  color: #fff;\n  margin: 0 auto;\n  padding: .3rem .6rem .4rem .5rem;\n  border: 0;\n  border-radius: 8px;\n  font-size: 18px;\n}\n\nbutton.surveyBtn {\n  font-size: 8pt;\n  margin-top: 8px;\n}\n\nbutton.surveyBtnBig {\n  font-size: 11pt;\n  padding: 5px;\n  margin-top: 0px;\n}\n\n#footer {\n  color: #999;\n  font-size: 9pt;\n  border-top: 1px solid #bbbbbb;\n  padding-top: 5px;\n  margin-top: 5px;\n\n  max-width: 700px;\n  /* center align */\n  margin-left: auto;\n  margin-right: auto;\n}\n\n#frontendErrorOutput {\n  color: #e93f34; /* should match brightRed JavaScript variable */\n  font-size: 12pt;\n  line-height: 1.5em;\n  margin-top: 8px;\n}\n\n.togetherjsBtn {\n  /*color: #b80000;*/\n  color: #e93f34;\n  font-size: 9pt;\n  padding: 4px;\n  margin-top: 3px;\n}\n\n/* make this a fixed size with scrollbars for overflow so that the UI doesn't jitter up and down */\n#publicHelpQueue {\n  overflow: auto;\n  height: 95px;\n  margin-bottom: 15px;\n  margin-left: 10px;\n}\n\n.helpQueueSmallText {\n  color: #777;\n  font-size: 8pt;\n}\n\n.redBold {\n  font-weight: bold;\n  color: #e93f34;\n}\n\n#stopRequestHelpBtn {\n  font-size: 9pt;\n  padding: 2px;\n}\n\n#moderationPanel {\n  font-size: 11pt;\n  margin-bottom: 5pt;\n  min-height: 16pt; /* just so things don't jiggle around vertically too much */\n  padding-top: 6px;\n  padding-bottom: 6px;\n  padding-left: 6px;\n  padding-right: 6px;\n  border: 1px solid #e93f34;\n}\n\n.kickLink {\n  font-size: 10pt;\n  margin-right: 4px;\n}\n\n\n#syncBtn {\n font-size: 8pt;\n margin-left: 0px;\n}\n\n#experimentalHeader {\n}\n\n#surveyHeader {\n  margin-left: 100px;\n}\n\n.surveyQ {\n  font-size: 9pt;\n  padding: 2px;\n}\n\n/* necessary for CodeMirror error line highlighting to work! */\n.CodeMirror .errorLine { background: #ffff3f !important; }\n\n\n/* from http://rog.ie/blog/css-star-rater */\n.star-rating {\n  font-size: 0;\n  white-space: nowrap;\n  display: inline-block;\n  /* pgbovine - scale this appropriately with a 5:1 ratio */\n  width: 100px;\n  height: 20px;\n  overflow: hidden;\n  position: relative;\n  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');\n  background-size: contain;\n}\n.star-rating i {\n  opacity: 0;\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 100%;\n  width: 20%;\n  z-index: 1;\n  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');\n  background-size: contain;\n}\n.star-rating input {\n  -moz-appearance: none;\n  -webkit-appearance: none;\n  opacity: 0;\n  display: inline-block;\n  width: 20%;\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  z-index: 2;\n  position: relative;\n}\n.star-rating input:hover + i,\n.star-rating input:checked + i {\n  opacity: 1;\n}\n.star-rating i ~ i {\n  width: 40%;\n}\n.star-rating i ~ i ~ i {\n  width: 60%;\n}\n.star-rating i ~ i ~ i ~ i {\n  width: 80%;\n}\n.star-rating i ~ i ~ i ~ i ~ i {\n  width: 100%;\n}\n\n\n#syntaxErrBubbleContents {\n  font-size: 9.5pt;\n  cursor: default;\n}\n\n#syntaxErrHeader {\n  margin-bottom: 3pt;\n}\n\n#syntaxErrCodeDisplay {\n  border: 1px solid #ddd;\n}\n\n#syntaxErrMsg {\n  color: #e93f34; /* should match brightRed JavaScript variable */\n  font-size: 10pt;\n  margin-top: 3pt;\n  margin-bottom: 2pt;\n}\n\n#syntaxErrQuestion {\n  margin-top: 12px;\n}\n\n#syntaxErrTxtInput {\n  margin-top: 3px;\n  margin-bottom: 6px;\n  padding: 2px;\n}\n\n#syntaxErrSubmitBtn, #syntaxErrCloseBtn {\n  margin-right: 8px;\n}\n\n#syntaxErrHideAllLink {\n  font-size: 8pt;\n}\n\n#testCasesPane {\n margin-top: 5px;\n padding-bottom: 5px;\n}\n\n#exampleSnippets {\n border-top: 1px solid #ccc;\n margin-top: 15px;\n}\n\n#showExampleLink {\n  margin-top: 15px;\n}\n\n#instructionsPane {\n margin-bottom: 10px;\n}\n\n/* for SyntaxErrorSurveyBubble */\n\ntextarea.bubbleInputText {\n  font-family: verdana, arial, helvetica, sans-serif;\n\tfont-size: 9pt;\n\tline-height: 1.3em;\n}\n\n.qtip-content {\n\tcolor: #333;\n\tbackground-color: #ffffff;\n\n\tmax-width: 390px;\n\twidth: 390px;\n\n\tborder: 2px solid #e93f34;\n\n  cursor: pointer;\n\n\t*border-right-width: 2px;\n\t*border-bottom-width: 2px;\n\n\t-webkit-border-radius: 5px;\n\t-moz-border-radius: 5px;\n\tborder-radius: 5px;\n\n\t-webkit-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);\n\t-moz-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);\n\tbox-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);\n\n\t-webkit-background-clip: padding-box;\n\t-moz-background-clip: padding;\n\tbackground-clip: padding-box;\n}\n", ""]);
 
 
 /***/ }),
-/* 35 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24723,12 +24762,9 @@ exports.push([module.i, "/* CSS accompanying ../visualize.html */\n\n.dashboard-
 // Copyright (C) Philip Guo (philip@pgbovine.net)
 // LICENSE: https://github.com/pgbovine/OnlinePythonTutor/blob/master/LICENSE.txt
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -24738,13 +24774,13 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 __webpack_require__(0);
 // just punt and use global script dependencies
+__webpack_require__(34);
+__webpack_require__(35);
 __webpack_require__(36);
 __webpack_require__(37);
 __webpack_require__(38);
 __webpack_require__(39);
 __webpack_require__(40);
-__webpack_require__(41);
-__webpack_require__(42);
 __webpack_require__(50);
 // need to directly import the class for type checking to work
 var opt_frontend_common_1 = __webpack_require__(29);
@@ -25378,48 +25414,6 @@ exports.OptFrontend = OptFrontend;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(1)(__webpack_require__(43))
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(1)(__webpack_require__(44))
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(1)(__webpack_require__(45))
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(1)(__webpack_require__(46))
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(1)(__webpack_require__(47))
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(1)(__webpack_require__(48))
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(1)(__webpack_require__(49))
-
-/***/ }),
 /* 43 */
 /***/ (function(module, exports) {
 
@@ -25952,7 +25946,9 @@ module.exports = "/*!@license Copyright 2013, Heinrich Goebl, License: MIT, see 
 /* 83 */,
 /* 84 */,
 /* 85 */,
-/* 86 */
+/* 86 */,
+/* 87 */,
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25961,12 +25957,9 @@ module.exports = "/*!@license Copyright 2013, Heinrich Goebl, License: MIT, see 
 // Copyright (C) Philip Guo (philip@pgbovine.net)
 // LICENSE: https://github.com/pgbovine/OnlinePythonTutor/blob/master/LICENSE.txt
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }

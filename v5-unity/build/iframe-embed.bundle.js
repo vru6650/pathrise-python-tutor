@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 81);
+/******/ 	return __webpack_require__(__webpack_require__.s = 83);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -22001,8 +22001,8 @@ var pytutor_1 = __webpack_require__(4);
 // objects per page; should still be instantiated as a SINGLETON
 var AbstractBaseFrontend = /** @class */ (function () {
     function AbstractBaseFrontend(params) {
-        var _this = this;
         if (params === void 0) { params = {}; }
+        var _this = this;
         this.sessionUUID = generateUUID(); // remains constant throughout one page load ("session")
         // a cache where each element is a pair:
         // [appState, cached execution trace]
@@ -22621,7 +22621,7 @@ exports.supports_html5_storage = supports_html5_storage;
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var content = __webpack_require__(34);
+var content = __webpack_require__(41);
 
 if (typeof content === 'string') {
   content = [[module.i, content, '']];
@@ -22711,7 +22711,14 @@ this.diff_match_patch=diff_match_patch;this.DIFF_DELETE=-1;this.DIFF_INSERT=1;th
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 34 */
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -22720,13 +22727,6 @@ exports.push([module.i, "/* CSS accompanying ../visualize.html */\n\n.dashboard-
 
 
 /***/ }),
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
 /* 42 */,
 /* 43 */,
 /* 44 */,
@@ -22766,7 +22766,9 @@ exports.push([module.i, "/* CSS accompanying ../visualize.html */\n\n.dashboard-
 /* 78 */,
 /* 79 */,
 /* 80 */,
-/* 81 */
+/* 81 */,
+/* 82 */,
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22775,12 +22777,9 @@ exports.push([module.i, "/* CSS accompanying ../visualize.html */\n\n.dashboard-
 // Copyright (C) Philip Guo (philip@pgbovine.net)
 // LICENSE: https://github.com/pgbovine/OnlinePythonTutor/blob/master/LICENSE.txt
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
