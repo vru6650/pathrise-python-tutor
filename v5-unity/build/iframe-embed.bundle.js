@@ -22130,8 +22130,7 @@ var AbstractBaseFrontend = /** @class */ (function () {
             }
             else {
                 _this.setFronendError(["Server error! Your code might have an INFINITE LOOP or be running for too long.",
-                    "The server may also be OVERLOADED. Or you're behind a FIREWALL that blocks access.",
-                    "Try again later. This site is provided for free with no available technical support."]);
+                    "The server may also be OVERLOADED. Or you're behind a FIREWALL that blocks access."]);
             }
             _this.doneExecutingCode();
         });
@@ -22266,8 +22265,7 @@ var AbstractBaseFrontend = /** @class */ (function () {
                 }
                 else {
                     _this.setFronendError(["Unknown error: The server may be OVERLOADED right now; try again later.",
-                        "Your code may also contain UNSUPPORTED FEATURES that this tool cannot handle.",
-                        "Try again later. This site is provided for free with no available technical support. [#NullTrace]"]);
+                        "Your code may also contain UNSUPPORTED FEATURES that this tool cannot handle."]);
                 }
             }
             else {
@@ -22621,7 +22619,7 @@ exports.supports_html5_storage = supports_html5_storage;
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var content = __webpack_require__(41);
+var content = __webpack_require__(34);
 
 if (typeof content === 'string') {
   content = [[module.i, content, '']];
@@ -22711,14 +22709,7 @@ this.diff_match_patch=diff_match_patch;this.DIFF_DELETE=-1;this.DIFF_INSERT=1;th
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -22727,6 +22718,13 @@ exports.push([module.i, "/* CSS accompanying ../visualize.html */\n\n.dashboard-
 
 
 /***/ }),
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
 /* 42 */,
 /* 43 */,
 /* 44 */,
