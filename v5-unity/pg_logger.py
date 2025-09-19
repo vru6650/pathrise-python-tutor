@@ -1470,7 +1470,8 @@ class PGLogger(bdb.Bdb):
                   for n in node.names:
                     all_modules_to_preimport.append(n.name)
                 elif isinstance(node, ast.ImportFrom):
-                  all_modules_to_preimport(node.module)
+                  if node.module:
+                    all_modules_to_preimport.append(node.module)
 
               for m in all_modules_to_preimport:
                 if m in script_str: # optimization: load only modules that appear in script_str
