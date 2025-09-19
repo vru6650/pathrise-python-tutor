@@ -3,6 +3,7 @@
 // LICENSE: https://github.com/pgbovine/OnlinePythonTutor/blob/master/LICENSE.txt
 
 import {ExecutionVisualizer} from './pytutor';
+import {getPyTutorBaseUrl} from './config';
 
 var allVisualizers = [];
 
@@ -25,7 +26,7 @@ function addVisualizerToPage(trace, divId, params) {
     params.embeddedMode = true;
   }
   if (params.editCodeBaseURL === undefined) {
-    params.editCodeBaseURL = 'http://pythontutor.com/visualize.html';
+    params.editCodeBaseURL = getPyTutorBaseUrl() + 'visualize.html';
   }
 
   // When some div in your webpage (such as a visualizer div) expands in height,

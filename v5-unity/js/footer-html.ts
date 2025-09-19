@@ -1,3 +1,7 @@
+import {getPyTutorBaseUrl} from './config';
+
+const pythonTutorBaseUrl = getPyTutorBaseUrl();
+
 export var privacyAndEndingHTML = `
 
 <p style="margin-top: 30px;">Privacy Policy: By using Python Tutor, your
@@ -41,7 +45,7 @@ change the link to <b>https://</b> if needed.</p>
 </div>
 
 <p style="margin-top: 25px;">
-<a href="http://pythontutor.com/">Python Tutor</a> (<a href="https://github.com/pgbovine/OnlinePythonTutor">code on GitHub</a>) supports seven
+<a href="${pythonTutorBaseUrl}">Python Tutor</a> (<a href="https://github.com/pgbovine/OnlinePythonTutor">code on GitHub</a>) supports seven
 languages (despite its name!):</p>
 
 <p>1. Python <a href="https://docs.python.org/2.7/">2.7</a> and <a

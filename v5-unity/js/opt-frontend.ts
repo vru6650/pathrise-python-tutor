@@ -38,6 +38,7 @@ require('script-loader!./lib/socket.io-client/socket.io.js');
 // need to directly import the class for type checking to work
 import {AbstractBaseFrontend, generateUUID, supports_html5_storage} from './opt-frontend-common';
 import {ExecutionVisualizer, assert, htmlspecialchars} from './pytutor';
+import {getPyTutorBaseUrl} from './config';
 
 require('../css/opt-frontend.css');
 require('../css/opt-testcases.css');
@@ -89,8 +90,8 @@ export class OptFrontend extends AbstractBaseFrontend {
       (myArgs as any).codeDivWidth = ExecutionVisualizer.DEFAULT_EMBEDDED_CODE_DIV_WIDTH;
       (myArgs as any).codeDivHeight = ExecutionVisualizer.DEFAULT_EMBEDDED_CODE_DIV_HEIGHT;
 
-      var domain = "http://pythontutor.com/"; // for deployment
-      var embedUrlStr = $.param.fragment(domain + "iframe-embed.html", myArgs, 2 /* clobber all */);
+      const domain = getPyTutorBaseUrl();
+      let embedUrlStr = $.param.fragment(domain + "iframe-embed.html", myArgs, 2 /* clobber all */);
       embedUrlStr = sanitizeURL(embedUrlStr);
       var iframeStr = '<iframe width="800" height="500" frameborder="0" src="' + embedUrlStr + '"> </iframe>';
       $('#embedCodeOutput').val(iframeStr);
