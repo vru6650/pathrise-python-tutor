@@ -64,9 +64,9 @@ def expect_script_finalizer(output_lst):
 
     # Crucial first line to make sure that Apache serves this data
     # correctly - DON'T FORGET THE EXTRA NEWLINES!!!:
-    print "Content-type: text/plain; charset=iso-8859-1\n\n"
+    print("Content-type: text/plain; charset=iso-8859-1\n\n")
     output_json = json.dumps(ret)
-    print output_json
+    print(output_json)
 
   else:
     # dunno which order these events come in ...
@@ -80,7 +80,8 @@ def really_finalize():
   #   '<module>' that contains only ONE global variable.  THAT'S
   #   the variable that we're gonna compare against testResults.
 
-  vars_to_compare = expect_trace_final_entry['globals'].keys()
+  ret = {}
+  vars_to_compare = list(expect_trace_final_entry['globals'].keys())
   if len(vars_to_compare) != 1:
     ret['status'] = 'error'
     ret['error_msg'] = "Fatal error: expected output has more than one global var!"
@@ -126,25 +127,31 @@ def really_finalize():
 
   # Crucial first line to make sure that Apache serves this data
   # correctly - DON'T FORGET THE EXTRA NEWLINES!!!:
-  print "Content-type: text/plain; charset=iso-8859-1\n\n"
+  print("Content-type: text/plain; charset=iso-8859-1\n\n")
   output_json = json.dumps(ret)
-  print output_json
+  print(output_json)
 
 
-form = cgi.FieldStorage()
-user_script = form['user_script'].value
-expect_script = form['expect_script'].value
+def process_form(form=None):
+  if form is None:
+    form = cgi.FieldStorage()
 
-# WEIRD: always run the expect_script FIRST since it's less likely to have
-# errors.  for some mysterious reason, if there's an error in user_script,
-# then it will never run expect_script
-#
-# also make sure to ignore IDs so that we can do direct object comparisons!
-pg_logger.exec_script_str(expect_script, expect_script_finalizer, ignore_id=True)
+  user_script = form['user_script'].value
+  expect_script = form['expect_script'].value
+
+  # WEIRD: always run the expect_script FIRST since it's less likely to have
+  # errors.  for some mysterious reason, if there's an error in user_script,
+  # then it will never run expect_script
+  #
+  # also make sure to ignore IDs so that we can do direct object comparisons!
+  pg_logger.exec_script_str(expect_script, expect_script_finalizer, ignore_id=True)
+
+  # set a custom instruction limit only for user scripts ...
+  if 'max_instructions' in form:
+    pg_logger.set_max_executed_lines(int(form['max_instructions'].value))
+
+  pg_logger.exec_script_str(user_script, user_script_finalizer, ignore_id=True)
 
 
-# set a custom instruction limit only for user scripts ...
-if 'max_instructions' in form:
-  pg_logger.set_max_executed_lines(int(form['max_instructions'].value))
-
-pg_logger.exec_script_str(user_script, user_script_finalizer, ignore_id=True)
+if __name__ == "__main__":
+  process_form()

@@ -51,7 +51,7 @@ def execute(input_filename, option_name):
 
 
 def clobber_golden_file(outfile, golden_file):
-  print '  Clobber %s => %s' % (outfile, golden_file)
+  print(f'  Clobber {outfile} => {golden_file}')
   shutil.copy(outfile, golden_file)
 
 # trivial EXACT FILE MATCH comparison, which works only if you're
@@ -87,17 +87,17 @@ def png_files_differ(f1, f2):
 
 def run_test(input_filename, clobber_golden=False):
     try:
-        print 'Testing', input_filename
+        print('Testing', input_filename)
         bn = os.path.basename(input_filename)
 
         # test all frontend display options
         for option in OPTIONS_DICT:
-            print "  " + option
+            print("  " + option)
             execute(input_filename, option)
 
             output_png_files = [e for e in os.listdir('.') if bn + '.step.' in e]
             if not output_png_files:
-                print "    " + RED + "no output .png files, maybe server is down?" + ENDC
+                print("    " + RED + "no output .png files, maybe server is down?" + ENDC)
                 
 
             for e in output_png_files:
@@ -105,7 +105,7 @@ def run_test(input_filename, clobber_golden=False):
 
                 if os.path.isfile(golden_file):
                     if png_files_differ(e, golden_file):
-                        print "    " + RED + e + " differs, moved to failed-tests/" + ENDC
+                        print("    " + RED + e + " differs, moved to failed-tests/" + ENDC)
 
                         # save it under a new name in failed-tests/
                         newname = 'failed-tests/' + os.path.splitext(e)[0] + '.' + option + '.png'
@@ -163,9 +163,9 @@ if __name__ == "__main__":
 
   if options.run_all:
     if options.clobber:
-      print 'Running all tests and clobbering results ...'
+      print('Running all tests and clobbering results ...')
     else:
-      print 'Running all tests ...'
+      print('Running all tests ...')
     run_all_tests(options.clobber)
   elif options.test_name:
     assert options.test_name in ALL_TESTS
