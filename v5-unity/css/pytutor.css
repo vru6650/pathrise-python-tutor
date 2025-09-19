@@ -65,6 +65,86 @@ div.ExecutionVisualizer #dataViz {
   /*margin-left: 25px;*/
 }
 
+div.ExecutionVisualizer .vizToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+div.ExecutionVisualizer .vizToolbarLabel {
+  font-size: 9pt;
+  font-weight: 600;
+  color: #444;
+}
+
+div.ExecutionVisualizer .vizToolbarInput {
+  padding: 0.2rem 0.4rem;
+  min-width: 13rem;
+  border: 1px solid #b7b7b7;
+  border-radius: 3px;
+  font-size: 9pt;
+}
+
+div.ExecutionVisualizer .vizToolbarInput:focus {
+  outline: none;
+  border-color: #2b80ff;
+  box-shadow: 0 0 0 2px rgba(43, 128, 255, 0.2);
+}
+
+div.ExecutionVisualizer .vizToolbarButton {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #7d7d7d;
+  border-radius: 3px;
+  background: #f5f5f5;
+  color: #333;
+  font-size: 9pt;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+div.ExecutionVisualizer .vizToolbarButton:hover:not(:disabled) {
+  background: #e9e9e9;
+}
+
+div.ExecutionVisualizer .vizToolbarButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+div.ExecutionVisualizer .vizToolbarSummary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  font-size: 9pt;
+  color: #555;
+}
+
+div.ExecutionVisualizer .vizToolbarDivider {
+  color: #bbb;
+  font-size: 8pt;
+}
+
+div.ExecutionVisualizer .vizToolbarSummaryItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+div.ExecutionVisualizer .vizToolbar.searchActive .vizToolbarInput {
+  border-color: #ffa200;
+  box-shadow: 0 0 0 2px rgba(255, 162, 0, 0.25);
+}
+
+div.ExecutionVisualizer .searchMatch {
+  background: #fff1a8;
+  box-shadow: 0 0 0 1px #ffd24d inset;
+  transition: background-color 0.15s ease;
+}
+
 /*
 div.ExecutionVisualizer div#codeDisplayDiv {
   width: 550px;
