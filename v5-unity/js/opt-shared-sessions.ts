@@ -1083,6 +1083,23 @@ Get live help!
       $("#togetherjsStatus").html("Please wait ... loading live help chat session");
     }
 
+    try {
+      const configuredHubBase = TogetherJS.config.get("hubBase");
+      if (configuredHubBase) {
+        const hubBaseUrl = new URL(configuredHubBase, window.location.href);
+        if (window.location.protocol === "https:" && hubBaseUrl.protocol !== "https:") {
+          hubBaseUrl.protocol = "https:";
+        } else if (!hubBaseUrl.protocol) {
+          hubBaseUrl.protocol = window.location.protocol || "https:";
+        }
+
+        const normalizedHubBase = hubBaseUrl.toString().replace(/\/*$/, "/");
+        TogetherJS.config("hubBase", normalizedHubBase);
+      }
+    } catch (e) {
+      console.warn("Unable to normalize TogetherJS hubBase", e);
+    }
+
     // clear your name from the cache every time to prevent privacy leaks
     if (supports_html5_storage()) {
       localStorage.removeItem('togetherjs.settings.name');
