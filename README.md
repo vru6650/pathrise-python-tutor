@@ -20,6 +20,8 @@ You can use [iframe embedding](v3/docs/embedding-HOWTO.md) to easily embed visua
 
 If you want to run locally on your own computer, to run Python visualizations try:
 
+> **Node.js toolchain:** The `v5-unity/` frontend build currently installs cleanly with Node.js 20.19.4 and npm 11.4.2. Using these versions (or newer compatible releases) will help keep the refreshed `package-lock.json` reproducible.
+
 ```
 pip install bottle # make sure the bottle webserver (http://bottlepy.org/) is installed
 cd OnlinePythonTutor/v5-unity/
