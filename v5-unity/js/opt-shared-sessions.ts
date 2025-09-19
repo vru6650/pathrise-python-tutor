@@ -34,6 +34,36 @@ declare var MobileDetect: any; // for TypeScript
 export var TogetherJS = (window as any).TogetherJS;
 
 
+function maybeUpgradeHubBaseForHttps() {
+  if (window.location.protocol !== 'https:') {
+    return;
+  }
+
+  var hubBase = TogetherJS.config.get('hubBase');
+  if (!hubBase || hubBase.indexOf('http://') !== 0) {
+    return;
+  }
+
+  var secureHubBase = hubBase.replace(/^http:\/\//, 'https://');
+  if (/^https:\/\/(45\.79\.11\.225|104\.237\.139\.253)/.test(secureHubBase)) {
+    secureHubBase = secureHubBase.replace(/^https:\/\/[^\/]+/, 'https://cokapi.com');
+  }
+
+  if (secureHubBase.charAt(secureHubBase.length - 1) !== '/') {
+    secureHubBase += '/';
+  }
+
+  if (secureHubBase !== hubBase) {
+    if ((TogetherJS as any)._defaultConfiguration) {
+      (TogetherJS as any)._defaultConfiguration.hubBase = secureHubBase;
+    }
+    TogetherJS.config('hubBase', secureHubBase);
+  }
+}
+
+maybeUpgradeHubBaseForHttps();
+
+
 import {supports_html5_storage} from './opt-frontend-common';
 import {OptFrontend} from './opt-frontend';
 import {OptDemoVideo} from './demovideo';
