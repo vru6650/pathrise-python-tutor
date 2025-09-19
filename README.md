@@ -22,8 +22,17 @@ If you want to run locally on your own computer, to run Python visualizations tr
 
 > **Node.js toolchain:** The `v5-unity/` frontend build currently installs cleanly with Node.js 20.19.4 and npm 11.4.2. Using these versions (or newer compatible releases) will help keep the refreshed `package-lock.json` reproducible.
 
+First, install Python dependencies (a virtual environment is recommended):
+
 ```
-pip install bottle # make sure the bottle webserver (http://bottlepy.org/) is installed
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Then start the Bottle development server:
+
+```
 cd OnlinePythonTutor/v5-unity/
 python bottle_server.py
 ```
