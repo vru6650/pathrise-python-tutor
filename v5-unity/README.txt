@@ -36,6 +36,18 @@ To start the webserver, run:
 then visit here to load an HTML page in your browser:
   http://localhost:8003/visualize.html
 
+To choose a different port for the Bottle server, set the PORT environment
+variable or pass a --port flag. For example, run
+
+  python bottle_server.py --port 9000
+
+or
+
+  PORT=9000 npm start
+
+The server listens on port 8080 by default and will automatically retry on
+the next port if the requested one is already taken.
+
 To make a production (minified, cache-busted) build for deployment, run:
 
   npm run production-build

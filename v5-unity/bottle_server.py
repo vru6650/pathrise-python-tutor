@@ -11,6 +11,10 @@
 # easy_install pip
 # pip install bottle
 
+import argparse
+import errno
+import sys
+
 from bottle import route, get, request, run, template, static_file
 try:
     import StringIO # NB: don't use cStringIO since it doesn't support unicode!!!
@@ -67,7 +71,26 @@ def get_py_exec():
 
 
 if __name__ == "__main__":
-    if os.environ.get('APP_LOCATION')=='heroku':
-        run(host='0.0.0.0', port=int(os.environ.get("PORT",5000)), reloader=True)
-    else:
-        run(host='localhost', port=5000, reloader=True)
+    parser = argparse.ArgumentParser(description='Start the OPT Bottle server.')
+    parser.add_argument('--port', type=int,
+                        help='Port to bind the Bottle development server.')
+    args = parser.parse_args()
+
+    default_port = 8080
+    env_port = os.environ.get('PORT')
+    port = args.port or (int(env_port) if env_port else default_port)
+
+    host = '0.0.0.0' if os.environ.get('APP_LOCATION') == 'heroku' else 'localhost'
+
+    try:
+        run(host=host, port=port, reloader=True)
+    except OSError as exc:
+        if getattr(exc, 'errno', None) == errno.EADDRINUSE:
+            fallback_port = port + 1 if port < 65535 else default_port
+            if fallback_port == port:
+                fallback_port = default_port + 1
+            print('Port %s is already in use; retrying on port %s.' % (port, fallback_port),
+                  file=sys.stderr)
+            run(host=host, port=fallback_port, reloader=True)
+        else:
+            raise
