@@ -1152,6 +1152,10 @@ class DataVisualizer {
 
   classAttrsHidden: any = {}; // kludgy hack for 'show/hide attributes' for class objects
 
+  toolbarIDs: {container: string; searchInput: string; clearButton: string; summary: string};
+  frameObjectSearchQuery: string = '';
+  lastAppliedSearchQuery: string = '';
+
   constructor(owner, domRoot, domRootD3) {
     this.owner = owner;
     this.params = this.owner.params;
@@ -1160,8 +1164,21 @@ class DataVisualizer {
     this.domRoot = domRoot;
     this.domRootD3 = domRootD3;
 
+    this.toolbarIDs = {
+      container: this.owner.generateID('dataVizToolbar'),
+      searchInput: this.owner.generateID('frameObjectSearchInput'),
+      clearButton: this.owner.generateID('frameObjectSearchClearBtn'),
+      summary: this.owner.generateID('dataVizSummary')
+    };
+
     var codeVizHTML = `
       <div id="dataViz">
+         <div id="${this.toolbarIDs.container}" class="vizToolbar">
+           <label for="${this.toolbarIDs.searchInput}" class="vizToolbarLabel">Search frames &amp; objects:</label>
+           <input type="search" id="${this.toolbarIDs.searchInput}" class="vizToolbarInput" placeholder="Type a variable, value, or object" autocomplete="off" aria-label="Search frames and objects" />
+           <button type="button" id="${this.toolbarIDs.clearButton}" class="vizToolbarButton" title="Clear search filter">Clear</button>
+           <div id="${this.toolbarIDs.summary}" class="vizToolbarSummary" aria-live="polite"></div>
+         </div>
          <table id="stackHeapTable">
            <tr>
              <td id="stack_td">
@@ -1180,6 +1197,53 @@ class DataVisualizer {
        </div>`;
 
     this.domRoot.append(codeVizHTML);
+
+    var searchInput = this.domRoot.find('#' + this.toolbarIDs.searchInput);
+    var clearButton = this.domRoot.find('#' + this.toolbarIDs.clearButton);
+
+    var updateSearchQuery = () => {
+      var rawVal = searchInput.val() as string;
+      var normalizedVal = rawVal ? rawVal : '';
+      if (this.frameObjectSearchQuery !== normalizedVal) {
+        this.frameObjectSearchQuery = normalizedVal;
+        this.owner.updateOutput();
+      } else {
+        this.updateSearchUIState();
+        this.applySearchHighlights();
+        if (this.curTrace && this.curTrace.length > this.owner.curInstr) {
+          this.updateToolbarSummary(this.owner.curInstr, this.curTrace[this.owner.curInstr]);
+        }
+      }
+    };
+
+    searchInput.on('input', updateSearchQuery);
+    searchInput.on('search', updateSearchQuery);
+    searchInput.on('keydown', (evt) => {
+      if (evt.key === 'Escape' || evt.key === 'Esc') {
+        if (this.frameObjectSearchQuery) {
+          searchInput.val('');
+          this.frameObjectSearchQuery = '';
+          this.owner.updateOutput();
+        }
+        // prevent default browser behavior that might close dialogs, etc.
+        evt.stopPropagation();
+      }
+    });
+
+    clearButton.on('click', () => {
+      if (this.frameObjectSearchQuery) {
+        this.frameObjectSearchQuery = '';
+        searchInput.val('');
+        this.owner.updateOutput();
+      } else {
+        this.updateSearchUIState();
+        this.applySearchHighlights();
+        if (this.curTrace && this.curTrace.length > this.owner.curInstr) {
+          this.updateToolbarSummary(this.owner.curInstr, this.curTrace[this.owner.curInstr]);
+        }
+      }
+      searchInput.trigger('focus');
+    });
 
     // create a persistent globals frame
     // (note that we need to keep #globals_area separate from #stack for d3 to work its magic)
@@ -1216,6 +1280,117 @@ class DataVisualizer {
   // display the same heap object at multiple execution steps.
   generateHeapObjID(objID, stepNum) {
     return this.owner.generateID('heap_object_' + objID + '_s' + stepNum);
+  }
+
+  updateSearchUIState() {
+    var clearButton = this.domRoot.find('#' + this.toolbarIDs.clearButton);
+    var hasQuery = this.frameObjectSearchQuery.trim().length > 0;
+    clearButton.prop('disabled', !hasQuery);
+  }
+
+  countActiveGlobals(entry) {
+    var count = 0;
+    if (!entry || !entry.ordered_globals || !entry.globals) {
+      return count;
+    }
+
+    $.each(entry.ordered_globals, function(i, varname) {
+      if (entry.globals[varname] !== undefined) {
+        count++;
+      }
+    });
+    return count;
+  }
+
+  scrollFirstSearchMatchIntoView() {
+    var matches = this.domRoot.find('#dataViz .searchMatch');
+    if (matches.length > 0) {
+      var firstMatch = matches.get(0) as HTMLElement;
+      if (firstMatch && firstMatch.scrollIntoView) {
+        firstMatch.scrollIntoView();
+      }
+    }
+  }
+
+  applySearchHighlights() {
+    this.updateSearchUIState();
+
+    var normalizedQuery = this.frameObjectSearchQuery.trim().toLowerCase();
+    var toolbar = this.domRoot.find('#' + this.toolbarIDs.container);
+    toolbar.toggleClass('searchActive', normalizedQuery.length > 0);
+
+    this.domRoot.find('#dataViz .searchMatch').removeClass('searchMatch');
+
+    if (!normalizedQuery) {
+      this.lastAppliedSearchQuery = '';
+      return;
+    }
+
+    var highlightMatches = (selector) => {
+      this.domRoot.find(selector).each(function(i, elem) {
+        var $elem = $(elem);
+        if ($elem.text().toLowerCase().indexOf(normalizedQuery) >= 0) {
+          $elem.addClass('searchMatch');
+        }
+      });
+    };
+
+    highlightMatches('div.stackFrameHeader');
+    highlightMatches('td.stackFrameVar');
+    highlightMatches('td.stackFrameValue');
+    highlightMatches('td.toplevelHeapObject');
+
+    if (normalizedQuery !== this.lastAppliedSearchQuery) {
+      this.scrollFirstSearchMatchIntoView();
+    }
+    this.lastAppliedSearchQuery = normalizedQuery;
+  }
+
+  updateToolbarSummary(curInstr: number, curEntry) {
+    var summaryNode = this.domRoot.find('#' + this.toolbarIDs.summary);
+    if (summaryNode.length === 0) {
+      return;
+    }
+
+    var framesLabel = this.getRealLabel('Frames');
+    var objectsLabel = this.getRealLabel('Objects');
+
+    var frameCount = 0;
+    if (curEntry && curEntry.stack_to_render) {
+      $.each(curEntry.stack_to_render, function(i, frame) {
+        if (!frame.is_zombie) {
+          frameCount++;
+        }
+      });
+    }
+
+    var heapCount = 0;
+    if (curEntry && curEntry.heap) {
+      heapCount = Object.keys(curEntry.heap).length;
+    }
+
+    var globalsCount = this.countActiveGlobals(curEntry);
+
+    var totalSteps = Math.max(this.owner.curTrace.length - 1, 0);
+    var denominator = Math.max(totalSteps, 1);
+    var numerator = Math.min(curInstr + 1, denominator);
+
+    var summaryParts: string[] = [];
+    summaryParts.push(framesLabel + ': ' + frameCount);
+    summaryParts.push(objectsLabel + ': ' + heapCount);
+    summaryParts.push('Globals: ' + globalsCount);
+    summaryParts.push('Step: ' + numerator + '/' + denominator);
+
+    var activeQuery = this.frameObjectSearchQuery.trim();
+    if (activeQuery) {
+      var matchCount = this.domRoot.find('#dataViz .searchMatch').length;
+      summaryParts.push('Filter: "' + htmlsanitize(activeQuery) + '"');
+      summaryParts.push('Matches: ' + matchCount);
+    }
+
+    summaryNode.html(summaryParts.map(function(part) {
+      return '<span class="vizToolbarSummaryItem">' + part + '</span>';
+    }).join('<span class="vizToolbarDivider">|</span>'));
   }
 
   // customize labels for each language's preferred vocabulary
@@ -2559,6 +2734,9 @@ class DataVisualizer {
     if (!frame_already_highlighted) {
       highlight_frame(myViz.owner.generateID('globals'));
     }
+
+    this.applySearchHighlights();
+    this.updateToolbarSummary(curInstr, curEntry);
 
     myViz.owner.try_hook("end_renderDataStructures", {myViz:myViz.owner /* tricky! use owner to be safe */});
   }
