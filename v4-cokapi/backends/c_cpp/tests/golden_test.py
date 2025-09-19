@@ -60,11 +60,11 @@ def execute(input_filename):
   (stdout, stderr) = Popen(PROGRAM + [input_filename], stdout=PIPE, stderr=PIPE).communicate()
 
   if stderr:
-    print '(has stderr)'
+    print('(has stderr)')
   #  print '  stderr {'
   #  print stderr, '}'
   else:
-    print
+    print()
 
   # capture stdout into outfile, filtering out machine-specific addresses
   outfile = base + OUTPUT_FILE_EXTENSION
@@ -72,7 +72,7 @@ def execute(input_filename):
 
   for line in stdout.splitlines():
     filtered_line = re.sub(' 0x.+?>', ' 0xADDR>', line)
-    print >> outf, filtered_line
+    print(filtered_line, file=outf)
 
   outf.close()
 
@@ -81,7 +81,7 @@ def clobber_golden_file(golden_file):
   (base, ext) = os.path.splitext(golden_file)
   outfile = base + OUTPUT_FILE_EXTENSION
   assert os.path.isfile(outfile)
-  print '  Clobber %s => %s' % (outfile, golden_file)
+  print(f'  Clobber {outfile} => {golden_file}')
   shutil.copy(outfile, golden_file)
 
 
@@ -118,15 +118,15 @@ def diff_test_output(test_name):
   # use system diff since difflib is SLOW AS HECK
   golden_filtered_f = open('/tmp/golden.trace', 'w')
   out_filtered_f = open('/tmp/out.trace', 'w')
-  print >> golden_filtered_f, golden_s_filtered
-  print >> out_filtered_f, out_s_filtered
+  print(golden_s_filtered, file=golden_filtered_f)
+  print(out_s_filtered, file=out_filtered_f)
   golden_filtered_f.close()
   out_filtered_f.close()
   os.system('diff -ur /tmp/out.trace /tmp/golden.trace')
 
 
 def run_test(input_filename, clobber_golden=False):
-  print 'Testing', input_filename,
+  print('Testing', input_filename, end=' ')
   sys.stdout.flush()
 
   (base, ext) = os.path.splitext(input_filename)
@@ -143,7 +143,7 @@ def run_test(input_filename, clobber_golden=False):
   golden_file = base + GOLDEN_FILE_EXTENSION
   if os.path.isfile(golden_file):
     if golden_differs_from_out(golden_file):
-      print "  " + RED + "FAILED!!!" + ENDC
+      print("  " + RED + "FAILED!!!" + ENDC)
     if clobber_golden:
       clobber_golden_file(golden_file)
   else:
@@ -189,9 +189,9 @@ if __name__ == "__main__":
 
   if options.run_all:
     if options.clobber:
-      print 'Running all tests and clobbering results ...'
+      print('Running all tests and clobbering results ...')
     else:
-      print 'Running all tests ...'
+      print('Running all tests ...')
     run_all_tests(options.clobber)
 
   elif options.diff_all:
