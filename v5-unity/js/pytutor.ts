@@ -35,6 +35,8 @@ require('./lib/jquery-ui-1.11.4/jquery-ui.css');
 require('./lib/jquery.ba-bbq.js'); // contains slight pgbovine modifications
 require('../css/pytutor');
 
+import {getPyTutorBaseUrl} from './config';
+
 
 // for TypeScript
 declare var jQuery: JQueryStatic;
@@ -442,7 +444,7 @@ export class ExecutionVisualizer {
 
       // add an extra label to link back to the main site, so that viewers
       // on the embedded page know that they're seeing an OPT visualization
-      base.append('<div style="font-size: 8pt; margin-bottom: 10px;"><a href="http://pythontutor.com" target="_blank" style="color: #3D58A2;">Python Tutor</a> by <a href="https://twitter.com/pgbovine" target="_blank" style="color: #3D58A2;">Philip Guo</a></div>');
+      base.append(`<div style="font-size: 8pt; margin-bottom: 10px;"><a href="${getPyTutorBaseUrl()}" target="_blank" style="color: #3D58A2;">Python Tutor</a> by <a href="https://twitter.com/pgbovine" target="_blank" style="color: #3D58A2;">Philip Guo</a></div>`);
       base.find('#codeFooterDocs').hide(); // cut out extraneous docs
     } else {
       // also display credits: nevermind
